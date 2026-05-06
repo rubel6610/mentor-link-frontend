@@ -53,8 +53,8 @@ const AdminSidebar = () => {
       <div className="sticky top-0 flex flex-col gap-6 px-4 py-6 lg:min-h-screen lg:px-6">
         <Logo />
 
-        <div className="rounded-xl bg-rose-50 border border-rose-200 px-3 py-2">
-          <p className="text-xs font-semibold text-rose-700 uppercase tracking-wider">Admin Panel</p>
+        <div className="rounded-xl bg-emerald-50 border border-emerald-200 px-3 py-2">
+          <p className="text-xs font-semibold text-emerald-700 uppercase tracking-wider">Admin Panel</p>
         </div>
 
         <nav className="flex gap-3 overflow-x-auto pb-1 lg:flex-col lg:overflow-visible">
@@ -68,8 +68,8 @@ const AdminSidebar = () => {
                 className={cn(
                   "flex min-w-fit items-center gap-3 rounded-xl border px-4 py-3 text-sm font-medium transition-colors",
                   isActive
-                    ? "border-rose-200 bg-rose-50 text-rose-700"
-                    : "border-slate-200 text-slate-600 hover:border-rose-100 hover:bg-slate-50 hover:text-slate-900",
+                    ? "border-emerald-200 bg-emerald-50 text-emerald-700"
+                    : "border-slate-200 text-slate-600 hover:border-emerald-100 hover:bg-slate-50 hover:text-slate-900",
                 )}
               >
                 <Icon className="h-4 w-4" />

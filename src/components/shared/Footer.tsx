@@ -66,7 +66,7 @@ const Footer = () => {
   return (
     <footer className="relative bg-white border-t border-slate-100 overflow-hidden">
       {/* Decorative top gradient line */}
-      <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500" />
+      <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-emerald-500 via-emerald-500 to-teal-500" />
 
       <div className="relative mx-auto max-w-7xl px-6 py-20">
         <div className="flex justify-between items-center mb-20">
@@ -105,7 +105,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-slate-500 font-bold hover:text-indigo-600 transition-colors flex items-center gap-2 group"
+                    className="text-slate-500 font-bold hover:text-emerald-600 transition-colors flex items-center gap-2 group"
                   >
                     <ChevronRight
                       size={14}
@@ -123,7 +123,7 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-10 border-y border-slate-100">
           {trustBadges.map((badge, idx) => (
             <div key={idx} className="flex items-center gap-4 group">
-              <div className="h-12 w-12 rounded-2xl bg-indigo-50 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all">
+              <div className="h-12 w-12 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition-all">
                 <badge.icon size={20} />
               </div>
               <div>

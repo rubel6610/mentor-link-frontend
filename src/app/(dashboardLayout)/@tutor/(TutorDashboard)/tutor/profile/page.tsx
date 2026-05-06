@@ -292,7 +292,7 @@ const ProfilePage = () => {
     if (!profile) {
       return {
         label: 'Profile not created yet',
-        tone: 'bg-amber-50 text-amber-700 border-amber-200',
+        tone: 'bg-orange-50 text-orange-700 border-orange-200',
       }
     }
 
@@ -303,7 +303,7 @@ const ProfilePage = () => {
         }
       : {
           label: 'Pending approval',
-          tone: 'bg-amber-50 text-amber-700 border-amber-200',
+          tone: 'bg-orange-50 text-orange-700 border-orange-200',
         }
   }, [profile])
 

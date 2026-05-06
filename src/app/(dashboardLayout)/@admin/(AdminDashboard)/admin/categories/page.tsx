@@ -88,7 +88,7 @@ const AdminCategoriesPage = () => {
   if (isLoading) return (
     <div className="flex min-h-[60vh] items-center justify-center">
       <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-sm">
-        <LoaderCircle className="h-5 w-5 animate-spin text-rose-600" />
+        <LoaderCircle className="h-5 w-5 animate-spin text-emerald-600" />
         <span className="text-sm text-slate-600">Loading categories...</span>
       </div>
     </div>
@@ -96,12 +96,12 @@ const AdminCategoriesPage = () => {
 
   return (
     <div className="space-y-6">
-      <section className="rounded-3xl bg-gradient-to-br from-rose-600 via-pink-600 to-orange-500 p-6 text-white shadow-lg">
+      <section className="rounded-3xl bg-gradient-to-br from-emerald-600 via-teal-600 to-orange-500 p-6 text-white shadow-lg">
         <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] mb-3">
           <Sparkles className="h-3.5 w-3.5" /> Category Management
         </div>
         <h1 className="text-3xl font-bold tracking-tight">Categories</h1>
-        <p className="mt-2 text-sm text-rose-50/90">Create and delete tutoring subject categories.</p>
+        <p className="mt-2 text-sm text-emerald-50/90">Create and delete tutoring subject categories.</p>
       </section>
 
       {/* Create form */}
@@ -113,19 +113,19 @@ const AdminCategoriesPage = () => {
             value={newName}
             onChange={(e) => setNewName(e.target.value)}
             placeholder="Category name (e.g. Mathematics)"
-            className="flex-1 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm outline-none focus:border-rose-400 focus:ring-2 focus:ring-rose-100"
+            className="flex-1 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100"
           />
           <input
             type="text"
             value={newIcon}
             onChange={(e) => setNewIcon(e.target.value)}
             placeholder="Icon (emoji or URL, optional)"
-            className="w-48 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm outline-none focus:border-rose-400 focus:ring-2 focus:ring-rose-100"
+            className="w-48 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100"
           />
           <Button
             onClick={handleCreate}
             disabled={isCreating || !newName.trim()}
-            className="rounded-2xl bg-rose-600 text-white hover:bg-rose-700"
+            className="rounded-2xl bg-emerald-600 text-white hover:bg-emerald-700"
           >
             {isCreating ? <LoaderCircle className="h-4 w-4 animate-spin" /> : <Plus className="h-4 w-4" />}
             Create
@@ -141,10 +141,10 @@ const AdminCategoriesPage = () => {
           </div>
         ) : (
           categories.map((cat) => (
-            <div key={cat.id} className="flex items-center justify-between rounded-2xl border border-slate-200 bg-white p-4 shadow-sm hover:border-rose-200 transition-colors">
+            <div key={cat.id} className="flex items-center justify-between rounded-2xl border border-slate-200 bg-white p-4 shadow-sm hover:border-emerald-200 transition-colors">
               <div className="flex items-center gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-rose-50 text-xl">
-                  {cat.icon || <FolderOpen className="h-5 w-5 text-rose-500" />}
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-xl">
+                  {cat.icon || <FolderOpen className="h-5 w-5 text-emerald-500" />}
                 </div>
                 <div>
                   <p className="font-medium text-slate-900">{cat.name}</p>

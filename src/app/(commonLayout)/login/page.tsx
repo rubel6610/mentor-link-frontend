@@ -31,12 +31,12 @@ const features = [
     sub: "Access thousands of expert-led courses.",
   },
   {
-    icon: <Users size={18} className="text-indigo-400" />,
+    icon: <Users size={18} className="text-emerald-400" />,
     title: "Live Mentorship",
     sub: "Get guidance from industry experts.",
   },
   {
-    icon: <Shield size={18} className="text-amber-400" />,
+    icon: <Shield size={18} className="text-orange-400" />,
     title: "Secure Learning",
     sub: "Safe & verified learning environment.",
   },
@@ -85,7 +85,7 @@ const Login = () => {
           text:
             result.message ||
             "Login successful! Redirecting to your dashboard...",
-          confirmButtonColor: "#4f46e5",
+          confirmButtonColor: "#059669",
           confirmButtonText: "Continue",
           timer: 2500,
           timerProgressBar: true,
@@ -110,7 +110,7 @@ const Login = () => {
           title: "Login Failed",
           text:
             result.message || "Invalid email or password. Please try again.",
-          confirmButtonColor: "#4f46e5",
+          confirmButtonColor: "#059669",
           confirmButtonText: "Try Again",
           customClass: {
             popup: "rounded-2xl",
@@ -123,7 +123,7 @@ const Login = () => {
         icon: "error",
         title: "Connection Error",
         text: "Unable to connect to the server. Please check your internet connection.",
-        confirmButtonColor: "#4f46e5",
+        confirmButtonColor: "#059669",
         confirmButtonText: "Retry",
         customClass: {
           popup: "rounded-2xl",
@@ -136,17 +136,17 @@ const Login = () => {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-50 via-white to-indigo-50/30 p-4 lg:p-8">
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-50 via-white to-emerald-50/30 p-4 lg:p-8">
       {/* Animated Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-indigo-200/30 blur-3xl animate-pulse" />
+        <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-emerald-200/30 blur-3xl animate-pulse" />
         <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-emerald-200/30 blur-3xl animate-pulse delay-1000" />
       </div>
 
       {/* Main Card Container */}
-      <div className="flex w-full max-w-5xl overflow-hidden rounded-3xl bg-white shadow-2xl shadow-indigo-500/10 border border-slate-100 transition-all duration-300 hover:shadow-indigo-500/20">
+      <div className="flex w-full max-w-5xl overflow-hidden rounded-3xl bg-white shadow-2xl shadow-emerald-500/10 border border-slate-100 transition-all duration-300 hover:shadow-emerald-500/20">
         {/* --- LEFT PANEL: Welcome Section --- */}
-        <div className="relative hidden w-[45%] flex-col justify-between bg-gradient-to-br from-indigo-600 via-indigo-700 to-indigo-900 p-10 text-white lg:flex">
+        <div className="relative hidden w-[45%] flex-col justify-between bg-gradient-to-br from-emerald-600 via-emerald-700 to-emerald-900 p-10 text-white lg:flex">
           <div className="relative z-10">
             <div className="flex items-center gap-2">
               <div className="relative">
@@ -159,7 +159,7 @@ const Login = () => {
                   />
                 </div>
               </div>
-              <span className="text-xl font-bold tracking-tight bg-gradient-to-r from-white to-indigo-200 bg-clip-text text-transparent">
+              <span className="text-xl font-bold tracking-tight bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-transparent">
                 MentorLink
               </span>
             </div>
@@ -167,11 +167,11 @@ const Login = () => {
             <div className="mt-12 space-y-3">
               <h1 className="text-4xl font-bold leading-tight tracking-tight">
                 Welcome back to
-                <span className="block mt-2 bg-gradient-to-r from-white to-indigo-200 bg-clip-text text-transparent">
+                <span className="block mt-2 bg-gradient-to-r from-white to-emerald-200 bg-clip-text text-transparent">
                   MentorLink
                 </span>
               </h1>
-              <p className="text-indigo-100 text-sm leading-relaxed">
+              <p className="text-emerald-100 text-sm leading-relaxed">
                 Continue your learning journey and unlock new possibilities with
                 our expert-led courses.
               </p>
@@ -181,15 +181,15 @@ const Login = () => {
             <div className="mt-8 flex gap-6">
               <div>
                 <div className="text-2xl font-bold">10k+</div>
-                <div className="text-xs text-indigo-200">Active Students</div>
+                <div className="text-xs text-emerald-200">Active Students</div>
               </div>
               <div>
                 <div className="text-2xl font-bold">500+</div>
-                <div className="text-xs text-indigo-200">Expert Tutors</div>
+                <div className="text-xs text-emerald-200">Expert Tutors</div>
               </div>
               <div>
                 <div className="text-2xl font-bold">98%</div>
-                <div className="text-xs text-indigo-200">Satisfaction Rate</div>
+                <div className="text-xs text-emerald-200">Satisfaction Rate</div>
               </div>
             </div>
           </div>
@@ -200,14 +200,14 @@ const Login = () => {
                 key={idx}
                 className="group flex items-start gap-3 rounded-xl border border-white/10 bg-white/5 p-3 transition-all duration-300 hover:bg-white/10 hover:border-white/20"
               >
-                <div className="rounded-lg bg-white/10 p-1.5 transition-all duration-300 group-hover:scale-110 group-hover:bg-indigo-500/30">
+                <div className="rounded-lg bg-white/10 p-1.5 transition-all duration-300 group-hover:scale-110 group-hover:bg-emerald-500/30">
                   {item.icon}
                 </div>
                 <div>
                   <h3 className="text-sm font-semibold text-white">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-indigo-200 leading-relaxed">
+                  <p className="text-xs text-emerald-200 leading-relaxed">
                     {item.sub}
                   </p>
                 </div>
@@ -215,9 +215,9 @@ const Login = () => {
             ))}
           </div>
 
-          <div className="relative z-10 flex items-center gap-4 text-xs text-indigo-300">
+          <div className="relative z-10 flex items-center gap-4 text-xs text-emerald-300">
             <span>© 2026 MentorLink Inc.</span>
-            <span className="h-3 w-px bg-indigo-400/30" />
+            <span className="h-3 w-px bg-emerald-400/30" />
             <span>Secure Platform</span>
           </div>
         </div>
@@ -225,9 +225,9 @@ const Login = () => {
         {/* --- RIGHT PANEL: Login Form --- */}
         <div className="flex flex-1 flex-col justify-center bg-white px-6 py-12 md:px-12 lg:px-16">
           <div className="mb-8 text-center lg:text-left">
-            <div className="inline-flex items-center justify-center gap-2 rounded-full bg-indigo-50 px-3 py-1 mb-4 lg:hidden">
-              <Sparkles size={14} className="text-indigo-600" />
-              <span className="text-xs font-semibold text-indigo-600">
+            <div className="inline-flex items-center justify-center gap-2 rounded-full bg-emerald-50 px-3 py-1 mb-4 lg:hidden">
+              <Sparkles size={14} className="text-emerald-600" />
+              <span className="text-xs font-semibold text-emerald-600">
                 MentorLink
               </span>
             </div>
@@ -247,7 +247,7 @@ const Login = () => {
               </label>
               <div className="relative group">
                 <Mail
-                  className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 transition-all group-focus-within:text-indigo-500"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 transition-all group-focus-within:text-emerald-500"
                   size={18}
                 />
                 <input
@@ -259,7 +259,7 @@ const Login = () => {
                       message: "Please enter a valid email address",
                     },
                   })}
-                  className="w-full rounded-xl border border-slate-200 bg-slate-50/50 py-3 pl-10 pr-4 text-sm outline-none transition-all placeholder:text-slate-400 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-500/20"
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50/50 py-3 pl-10 pr-4 text-sm outline-none transition-all placeholder:text-slate-400 focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-500/20"
                   placeholder="you@example.com"
                 />
               </div>
@@ -279,7 +279,7 @@ const Login = () => {
               </div>
               <div className="relative group">
                 <Lock
-                  className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 transition-all group-focus-within:text-indigo-500"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 transition-all group-focus-within:text-emerald-500"
                   size={18}
                 />
                 <input
@@ -291,13 +291,13 @@ const Login = () => {
                       message: "Password must be at least 6 characters",
                     },
                   })}
-                  className="w-full rounded-xl border border-slate-200 bg-slate-50/50 py-3 pl-10 pr-10 text-sm outline-none transition-all placeholder:text-slate-400 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-500/20"
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50/50 py-3 pl-10 pr-10 text-sm outline-none transition-all placeholder:text-slate-400 focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-500/20"
                   placeholder="Enter your password"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 transition-colors hover:text-indigo-500"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 transition-colors hover:text-emerald-500"
                 >
                   {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                 </button>
@@ -313,7 +313,7 @@ const Login = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="group relative mt-6 flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-700 py-3.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 transition-all duration-200 hover:shadow-indigo-500/40 hover:from-indigo-700 hover:to-indigo-800 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70"
+              className="group relative mt-6 flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-700 py-3.5 text-sm font-semibold text-white shadow-lg shadow-emerald-500/20 transition-all duration-200 hover:shadow-emerald-500/40 hover:from-emerald-700 hover:to-emerald-800 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-70"
             >
               {isLoading ? (
                 <>
@@ -342,7 +342,7 @@ const Login = () => {
               Don&apos;t have an account?{" "}
               <a
                 href="/register"
-                className="font-semibold text-indigo-600 transition-colors hover:text-indigo-700 hover:underline underline-offset-4"
+                className="font-semibold text-emerald-600 transition-colors hover:text-emerald-700 hover:underline underline-offset-4"
               >
                 Create free account
               </a>

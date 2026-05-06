@@ -39,7 +39,7 @@ const StarRating = ({ rating }: { rating: number }) => (
         size={12}
         className={
           i <= Math.round(rating)
-            ? "fill-amber-400 text-amber-400"
+            ? "fill-orange-400 text-orange-400"
             : "text-slate-200"
         }
       />
@@ -55,11 +55,11 @@ const TutorAvatar = ({ tutor }: { tutor: TutorProfile }) => {
     .toUpperCase()
     .slice(0, 2);
   const gradients = [
-    "from-indigo-400 to-cyan-400",
+    "from-emerald-400 to-cyan-400",
     "from-emerald-400 to-teal-400",
-    "from-rose-400 to-orange-400",
-    "from-purple-400 to-pink-400",
-    "from-blue-400 to-indigo-400",
+    "from-emerald-400 to-orange-400",
+    "from-emerald-400 to-teal-400",
+    "from-blue-400 to-emerald-400",
   ];
   const gradient = gradients[tutor.id % gradients.length];
   const imageUrl = getSafeImageUrl(tutor.imageUrl);
@@ -148,11 +148,11 @@ export default function BrowseTutorPage() {
         <div className="mx-auto max-w-7xl px-6">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
             <div className="max-w-2xl">
-              <div className="inline-flex items-center gap-2 rounded-full bg-indigo-50 px-4 py-1.5 text-xs font-semibold text-indigo-600 mb-6">
+              <div className="inline-flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-1.5 text-xs font-semibold text-emerald-600 mb-6">
                 <ShieldCheck size={14} /> Verified Expert Tutors
               </div>
               <h1 className="text-4xl md:text-6xl font-bold text-slate-900 tracking-tight">
-                Find the perfect <span className="text-indigo-600">tutor</span>{" "}
+                Find the perfect <span className="text-emerald-600">tutor</span>{" "}
                 for your goals.
               </h1>
               <p className="mt-4 text-lg text-slate-500 leading-relaxed">
@@ -162,7 +162,7 @@ export default function BrowseTutorPage() {
               </p>
             </div>
             <div className="flex-shrink-0 grid grid-cols-2 gap-4">
-              <div className="rounded-3xl bg-indigo-600 p-6 text-white shadow-xl shadow-indigo-100">
+              <div className="rounded-3xl bg-emerald-600 p-6 text-white shadow-xl shadow-emerald-100">
                 <div className="text-3xl font-bold">{tutors.length}</div>
                 <div className="text-sm opacity-80">Active Tutors</div>
               </div>
@@ -184,7 +184,7 @@ export default function BrowseTutorPage() {
               {/* Search */}
               <div className="rounded-3xl bg-white border border-slate-200 p-6 shadow-sm">
                 <h3 className="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
-                  <Search size={16} className="text-indigo-600" /> Search
+                  <Search size={16} className="text-emerald-600" /> Search
                 </h3>
                 <div className="relative">
                   <Search
@@ -196,7 +196,7 @@ export default function BrowseTutorPage() {
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     placeholder="Search name or bio..."
-                    className="w-full rounded-2xl border border-slate-200 bg-slate-50/50 py-2.5 pl-10 pr-4 text-sm outline-none focus:border-indigo-400 focus:ring-4 focus:ring-indigo-100 transition-all"
+                    className="w-full rounded-2xl border border-slate-200 bg-slate-50/50 py-2.5 pl-10 pr-4 text-sm outline-none focus:border-emerald-400 focus:ring-4 focus:ring-emerald-100 transition-all"
                   />
                 </div>
               </div>
@@ -204,13 +204,13 @@ export default function BrowseTutorPage() {
               {/* Category Filter */}
               <div className="rounded-3xl bg-white border border-slate-200 p-6 shadow-sm">
                 <h3 className="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
-                  <LayoutGrid size={16} className="text-indigo-600" />{" "}
+                  <LayoutGrid size={16} className="text-emerald-600" />{" "}
                   Categories
                 </h3>
                 <div className="space-y-1">
                   <button
                     onClick={() => setSelectedCategoryId(null)}
-                    className={`w-full text-left px-4 py-2 text-sm rounded-xl transition-all ${!selectedCategoryId ? "bg-indigo-600 text-white shadow-md shadow-indigo-100" : "text-slate-600 hover:bg-slate-50"}`}
+                    className={`w-full text-left px-4 py-2 text-sm rounded-xl transition-all ${!selectedCategoryId ? "bg-emerald-600 text-white shadow-md shadow-emerald-100" : "text-slate-600 hover:bg-slate-50"}`}
                   >
                     All Categories
                   </button>
@@ -218,7 +218,7 @@ export default function BrowseTutorPage() {
                     <button
                       key={cat.id}
                       onClick={() => setSelectedCategoryId(cat.id)}
-                      className={`w-full text-left px-4 py-2 text-sm rounded-xl transition-all ${selectedCategoryId === cat.id ? "bg-indigo-600 text-white shadow-md shadow-indigo-100" : "text-slate-600 hover:bg-slate-50"}`}
+                      className={`w-full text-left px-4 py-2 text-sm rounded-xl transition-all ${selectedCategoryId === cat.id ? "bg-emerald-600 text-white shadow-md shadow-emerald-100" : "text-slate-600 hover:bg-slate-50"}`}
                     >
                       {cat.name}
                     </button>
@@ -229,7 +229,7 @@ export default function BrowseTutorPage() {
               {/* Price Filter */}
               <div className="rounded-3xl bg-white border border-slate-200 p-6 shadow-sm">
                 <h3 className="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
-                  <Wallet size={16} className="text-indigo-600" /> Price Range
+                  <Wallet size={16} className="text-emerald-600" /> Price Range
                 </h3>
                 <input
                   type="range"
@@ -238,7 +238,7 @@ export default function BrowseTutorPage() {
                   step="100"
                   value={maxPrice}
                   onChange={(e) => setMaxPrice(Number(e.target.value))}
-                  className="w-full accent-indigo-600"
+                  className="w-full accent-emerald-600"
                 />
                 <div className="flex justify-between mt-2 text-xs font-bold text-slate-500">
                   <span>$0</span>
@@ -249,14 +249,14 @@ export default function BrowseTutorPage() {
               {/* Rating Filter */}
               <div className="rounded-3xl bg-white border border-slate-200 p-6 shadow-sm">
                 <h3 className="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
-                  <Star size={16} className="text-amber-400" /> Minimum Rating
+                  <Star size={16} className="text-orange-400" /> Minimum Rating
                 </h3>
                 <div className="grid grid-cols-2 gap-2">
                   {[0, 3, 4, 4.5].map((r) => (
                     <button
                       key={r}
                       onClick={() => setMinRating(r)}
-                      className={`px-3 py-2 text-xs font-bold rounded-xl border transition-all ${minRating === r ? "border-indigo-600 bg-indigo-50 text-indigo-700" : "border-slate-200 text-slate-500 hover:border-indigo-200"}`}
+                      className={`px-3 py-2 text-xs font-bold rounded-xl border transition-all ${minRating === r ? "border-emerald-600 bg-emerald-50 text-emerald-700" : "border-slate-200 text-slate-500 hover:border-emerald-200"}`}
                     >
                       {r === 0 ? "Any" : `${r}★ & Up`}
                     </button>
@@ -271,7 +271,7 @@ export default function BrowseTutorPage() {
                   setMaxPrice(5000);
                   setMinRating(0);
                 }}
-                className="w-full py-3 text-sm font-bold text-slate-400 hover:text-rose-500 transition-colors"
+                className="w-full py-3 text-sm font-bold text-slate-400 hover:text-emerald-500 transition-colors"
               >
                 Reset all filters
               </button>
@@ -291,7 +291,7 @@ export default function BrowseTutorPage() {
 
             {isLoading ? (
               <div className="flex flex-col items-center justify-center py-20">
-                <LoaderCircle className="animate-spin h-12 w-12 text-indigo-600" />
+                <LoaderCircle className="animate-spin h-12 w-12 text-emerald-600" />
                 <p className="mt-4 text-lg text-slate-500">Loading tutors...</p>
               </div>
             ) : filteredTutors.length === 0 ? (
@@ -309,14 +309,14 @@ export default function BrowseTutorPage() {
                 {filteredTutors.map((tutor) => (
                   <div
                     key={tutor.id}
-                    className="group bg-white border border-slate-200 rounded-[32px] p-5 transition-all hover:shadow-2xl hover:shadow-indigo-100/50 hover:border-indigo-200"
+                    className="group bg-white border border-slate-200 rounded-[32px] p-5 transition-all hover:shadow-2xl hover:shadow-emerald-100/50 hover:border-emerald-200"
                   >
                     <div className="flex gap-4 mb-4">
                       <div className="h-16 w-16 flex-shrink-0">
                         <TutorAvatar tutor={tutor} />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <h3 className="text-lg font-bold text-slate-900 truncate group-hover:text-indigo-600 transition-colors">
+                        <h3 className="text-lg font-bold text-slate-900 truncate group-hover:text-emerald-600 transition-colors">
                           {tutor.user.name}
                         </h3>
                         <div className="flex items-center gap-1 text-xs text-slate-400 mt-0.5">
@@ -357,7 +357,7 @@ export default function BrowseTutorPage() {
                       </div>
                       <Link
                         href={`/tutors/${tutor.id}`}
-                        className="inline-flex items-center gap-2 px-6 py-2.5 rounded-2xl bg-indigo-600 text-white text-sm font-bold shadow-lg shadow-indigo-100 hover:bg-indigo-700 transition-all hover:scale-105 active:scale-95"
+                        className="inline-flex items-center gap-2 px-6 py-2.5 rounded-2xl bg-emerald-600 text-white text-sm font-bold shadow-lg shadow-emerald-100 hover:bg-emerald-700 transition-all hover:scale-105 active:scale-95"
                       >
                         Profile <ChevronRight size={14} />
                       </Link>

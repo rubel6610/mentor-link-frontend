@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const HeroSection = () => {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-indigo-600 via-purple-700 to-pink-600 text-white">
+    <section className="relative overflow-hidden bg-gradient-to-br from-emerald-600 via-teal-700 to-emerald-800 text-white">
       {/* Animated background blobs */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-20 left-10 w-72 h-72 bg-white rounded-full blur-3xl animate-pulse" />
@@ -18,11 +18,11 @@ const HeroSection = () => {
             <span className="text-xs bg-white/30 rounded-full px-2 py-0.5">v2.0</span>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-indigo-100 to-pink-100">
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-emerald-100 to-teal-100">
             Connect. Learn. <br className="hidden md:block" />Grow Together.
           </h1>
           
-          <p className="text-lg md:text-xl text-indigo-100 max-w-2xl mx-auto mb-10">
+          <p className="text-lg md:text-xl text-emerald-100 max-w-2xl mx-auto mb-10">
             MentorLink connects passionate learners with expert tutors. 
             Browse profiles, check availability, and book sessions instantly — all in one seamless platform.
           </p>
@@ -30,7 +30,7 @@ const HeroSection = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link 
               href="/register" 
-              className="bg-white text-indigo-700 px-8 py-3 rounded-xl font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300"
+              className="bg-white text-emerald-700 px-8 py-3 rounded-xl font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
               Start Learning →
             </Link>
@@ -42,7 +42,7 @@ const HeroSection = () => {
             </Link>
           </div>
 
-          <div className="mt-16 flex flex-wrap justify-center gap-8 text-sm text-indigo-200">
+          <div className="mt-16 flex flex-wrap justify-center gap-8 text-sm text-emerald-200">
             <div className="flex items-center gap-2">🎓 5,000+ Students</div>
             <div className="flex items-center gap-2">👨‍🏫 1,200+ Expert Tutors</div>
             <div className="flex items-center gap-2">⭐ 4.95 Average Rating</div>

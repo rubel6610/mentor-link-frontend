@@ -12,7 +12,7 @@ const stats = [
 
 const HeroSection = () => {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-indigo-600 via-purple-700 to-pink-600 text-white">
+    <section className="relative overflow-hidden bg-gradient-to-br from-emerald-600 via-teal-700 to-emerald-800 text-white">
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-20 left-10 h-72 w-72 rounded-full bg-white blur-3xl animate-pulse" />
         <div className="absolute bottom-20 right-10 h-96 w-96 rounded-full bg-yellow-300 blur-3xl animate-pulse delay-1000" />
@@ -25,19 +25,19 @@ const HeroSection = () => {
               MentorLink — Learn from Experts
             </span>
           </div>
-          <h1 className="mb-6 bg-gradient-to-r from-white via-indigo-100 to-pink-100 bg-clip-text text-5xl font-bold text-transparent md:text-7xl">
+          <h1 className="mb-6 bg-gradient-to-r from-white via-emerald-100 to-teal-100 bg-clip-text text-5xl font-bold text-transparent md:text-7xl">
             Connect. Learn.
             <br className="hidden md:block" />
             Grow Together.
           </h1>
-          <p className="mx-auto mb-10 max-w-2xl text-lg text-indigo-100 md:text-xl">
+          <p className="mx-auto mb-10 max-w-2xl text-lg text-emerald-100 md:text-xl">
             MentorLink connects passionate learners with expert tutors.
             Browse profiles, check availability, and book sessions instantly.
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Link
               href="/tutors"
-              className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-3 font-semibold text-indigo-700 transition hover:scale-105 hover:shadow-xl"
+              className="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-3 font-semibold text-emerald-700 transition hover:scale-105 hover:shadow-xl"
             >
               Browse Tutors <ArrowRight size={16} />
             </Link>
@@ -48,7 +48,7 @@ const HeroSection = () => {
               Become a Tutor
             </Link>
           </div>
-          <div className="mt-14 flex flex-wrap justify-center gap-8 text-sm text-indigo-200">
+          <div className="mt-14 flex flex-wrap justify-center gap-8 text-sm text-emerald-200">
             {stats.map((s) => (
               <div key={s.label} className="text-center">
                 <div className="text-2xl font-bold text-white">{s.value}</div>

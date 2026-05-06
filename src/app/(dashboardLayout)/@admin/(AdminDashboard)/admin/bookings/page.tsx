@@ -24,10 +24,10 @@ type AdminBooking = {
 };
 
 const statusTone: Record<BookingStatus, string> = {
-  PENDING: "border-amber-200 bg-amber-50 text-amber-700",
+  PENDING: "border-orange-200 bg-orange-50 text-orange-700",
   CONFIRMED: "border-sky-200 bg-sky-50 text-sky-700",
   COMPLETED: "border-emerald-200 bg-emerald-50 text-emerald-700",
-  CANCELLED: "border-rose-200 bg-rose-50 text-rose-700",
+  CANCELLED: "border-emerald-200 bg-emerald-50 text-emerald-700",
 };
 
 const AdminBookingsPage = () => {
@@ -97,7 +97,7 @@ const AdminBookingsPage = () => {
   if (isLoading) return (
     <div className="flex min-h-[60vh] items-center justify-center">
       <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-sm">
-        <LoaderCircle className="h-5 w-5 animate-spin text-rose-600" />
+        <LoaderCircle className="h-5 w-5 animate-spin text-emerald-600" />
         <span className="text-sm text-slate-600">Loading bookings...</span>
       </div>
     </div>
@@ -105,12 +105,12 @@ const AdminBookingsPage = () => {
 
   return (
     <div className="space-y-6">
-      <section className="rounded-3xl bg-gradient-to-br from-rose-600 via-pink-600 to-orange-500 p-6 text-white shadow-lg">
+      <section className="rounded-3xl bg-gradient-to-br from-emerald-600 via-teal-600 to-orange-500 p-6 text-white shadow-lg">
         <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] mb-3">
           <Sparkles className="h-3.5 w-3.5" /> Booking Management
         </div>
         <h1 className="text-3xl font-bold tracking-tight">All Bookings</h1>
-        <p className="mt-2 text-sm text-rose-50/90">Monitor all platform session bookings.</p>
+        <p className="mt-2 text-sm text-emerald-50/90">Monitor all platform session bookings.</p>
       </section>
 
       <div className="flex flex-col gap-3 sm:flex-row">
@@ -118,12 +118,12 @@ const AdminBookingsPage = () => {
           <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
           <input type="text" value={search} onChange={(e) => setSearch(e.target.value)}
             placeholder="Search student or tutor..."
-            className="w-full rounded-2xl border border-slate-200 bg-white py-3 pl-11 pr-4 text-sm outline-none focus:border-rose-400 focus:ring-2 focus:ring-rose-100" />
+            className="w-full rounded-2xl border border-slate-200 bg-white py-3 pl-11 pr-4 text-sm outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100" />
         </div>
         <div className="flex gap-2 flex-wrap">
           {(["ALL", "PENDING", "CONFIRMED", "COMPLETED", "CANCELLED"] as const).map((s) => (
             <button key={s} onClick={() => setStatusFilter(s)}
-              className={`rounded-2xl border px-3 py-2 text-xs font-semibold transition-colors ${statusFilter === s ? "border-rose-300 bg-rose-50 text-rose-700" : "border-slate-200 bg-white text-slate-600 hover:bg-slate-50"}`}>
+              className={`rounded-2xl border px-3 py-2 text-xs font-semibold transition-colors ${statusFilter === s ? "border-emerald-300 bg-emerald-50 text-emerald-700" : "border-slate-200 bg-white text-slate-600 hover:bg-slate-50"}`}>
               {s}
             </button>
           ))}
@@ -141,10 +141,10 @@ const AdminBookingsPage = () => {
               {b.paymentStatus && <span className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-0.5 text-xs font-semibold text-slate-600">Payment: {b.paymentStatus}</span>}
             </div>
             <div className="grid gap-2 text-sm text-slate-600 sm:grid-cols-2 xl:grid-cols-4">
-              <div className="flex items-center gap-2"><BookOpen className="h-4 w-4 text-indigo-500" />Student: {b.student.name}</div>
+              <div className="flex items-center gap-2"><BookOpen className="h-4 w-4 text-emerald-500" />Student: {b.student.name}</div>
               <div className="flex items-center gap-2"><BookOpen className="h-4 w-4 text-sky-500" />Tutor: {b.tutorProfile.user.name}</div>
-              <div className="flex items-center gap-2"><CalendarDays className="h-4 w-4 text-rose-500" />{new Date(b.scheduledAt).toLocaleString()}</div>
-              <div className="flex items-center gap-2"><Clock3 className="h-4 w-4 text-rose-500" />{b.duration} min</div>
+              <div className="flex items-center gap-2"><CalendarDays className="h-4 w-4 text-emerald-500" />{new Date(b.scheduledAt).toLocaleString()}</div>
+              <div className="flex items-center gap-2"><Clock3 className="h-4 w-4 text-emerald-500" />{b.duration} min</div>
               <div className="flex items-center gap-2"><Wallet className="h-4 w-4 text-emerald-500" />${b.totalPrice.toFixed(2)}</div>
             </div>
             {b.note && <p className="mt-3 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-2 text-sm text-slate-500">{b.note}</p>}
@@ -153,7 +153,7 @@ const AdminBookingsPage = () => {
                 <Button
                   onClick={() => handleUpdatePayment(b.id, "PAID")}
                   disabled={updatingId === b.id}
-                  className="h-9 rounded-xl bg-indigo-600 px-4 text-xs font-semibold text-white hover:bg-indigo-700"
+                  className="h-9 rounded-xl bg-emerald-600 px-4 text-xs font-semibold text-white hover:bg-emerald-700"
                 >
                   <CreditCard className="mr-2 h-3.5 w-3.5" />
                   Mark Paid

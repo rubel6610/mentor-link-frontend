@@ -15,8 +15,8 @@ const stats = [
     value: 1250,
     suffix: "+",
     icon: Users,
-    color: "text-indigo-600",
-    bg: "bg-indigo-50",
+    color: "text-emerald-600",
+    bg: "bg-emerald-50",
   },
   {
     label: "Lessons Delivered",
@@ -31,8 +31,8 @@ const stats = [
     value: 12000,
     suffix: "+",
     icon: Star,
-    color: "text-amber-600",
-    bg: "bg-amber-50",
+    color: "text-orange-600",
+    bg: "bg-orange-50",
   },
   {
     label: "Countries Represented",
@@ -108,7 +108,7 @@ const PlatformStats = () => {
               </div>
               <div className="text-3xl md:text-4xl font-black text-slate-900 mb-1">
                 <span className="counter" data-value={stat.value}>0</span>
-                <span className="text-indigo-600">{stat.suffix}</span>
+                <span className="text-emerald-600">{stat.suffix}</span>
               </div>
               <div className="text-sm font-bold text-slate-400 uppercase tracking-widest">
                 {stat.label}

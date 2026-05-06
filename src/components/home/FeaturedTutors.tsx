@@ -34,7 +34,7 @@ export const StarRating = ({ rating }: { rating: number }) => (
         size={12}
         className={
           i <= Math.round(rating)
-            ? "fill-amber-400 text-amber-400"
+            ? "fill-orange-400 text-orange-400"
             : "text-slate-200"
         }
       />
@@ -50,11 +50,11 @@ export const TutorAvatar = ({ tutor }: { tutor: TutorProfile }) => {
     .toUpperCase()
     .slice(0, 2);
   const gradients = [
-    "from-violet-400 to-fuchsia-500",
-    "from-cyan-400 to-blue-500",
     "from-emerald-400 to-teal-500",
-    "from-orange-400 to-rose-500",
-    "from-indigo-400 to-purple-500",
+    "from-cyan-400 to-blue-500",
+    "from-teal-400 to-emerald-500",
+    "from-orange-400 to-emerald-500",
+    "from-emerald-400 to-emerald-600",
   ];
   const gradient = gradients[tutor.id % gradients.length];
   const imageUrl = getSafeImageUrl(tutor.imageUrl);
@@ -83,11 +83,11 @@ interface FeaturedTutorsProps {
 
 const FeaturedTutors = ({ tutors, isLoading }: FeaturedTutorsProps) => {
   return (
-    <section className="bg-gradient-to-br from-slate-50 to-indigo-50/30 py-20">
+    <section className="bg-gradient-to-br from-slate-50 to-emerald-50/30 py-20">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-indigo-100 px-4 py-1.5 text-xs font-semibold text-indigo-700">
+            <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-1.5 text-xs font-semibold text-emerald-700">
               <ShieldCheck size={12} /> Verified Experts
             </div>
             <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">
@@ -99,7 +99,7 @@ const FeaturedTutors = ({ tutors, isLoading }: FeaturedTutorsProps) => {
           </div>
           <Link
             href="/tutors"
-            className="inline-flex items-center gap-2 rounded-xl border border-indigo-200 bg-white px-5 py-2.5 text-sm font-semibold text-indigo-700 hover:bg-indigo-50 transition"
+            className="inline-flex items-center gap-2 rounded-xl border border-emerald-200 bg-white px-5 py-2.5 text-sm font-semibold text-emerald-700 hover:bg-emerald-50 transition"
           >
             View all tutors <ChevronRight size={16} />
           </Link>
@@ -107,13 +107,13 @@ const FeaturedTutors = ({ tutors, isLoading }: FeaturedTutorsProps) => {
 
         {isLoading ? (
           <div className="flex flex-col items-center justify-center py-20">
-            <Loader className="animate-spin h-12 w-12 text-indigo-600" />
+            <Loader className="animate-spin h-12 w-12 text-emerald-600" />
             <p className="mt-4 text-lg text-slate-500">
               Loading featured tutors...
             </p>
           </div>
         ) : tutors.length === 0 ? (
-          <div className="rounded-3xl border border-dashed border-indigo-200 bg-white p-16 text-center">
+          <div className="rounded-3xl border border-dashed border-emerald-200 bg-white p-16 text-center">
             <div className="text-5xl mb-4">📚</div>
             <h3 className="text-lg font-semibold text-slate-700">
               No tutors yet
@@ -127,7 +127,7 @@ const FeaturedTutors = ({ tutors, isLoading }: FeaturedTutorsProps) => {
             {tutors.map((tutor) => (
               <div
                 key={tutor.id}
-                className="group rounded-3xl border border-slate-100 bg-white p-5 shadow-sm transition-all hover:border-indigo-300 hover:shadow-xl"
+                className="group rounded-3xl border border-slate-100 bg-white p-5 shadow-sm transition-all hover:border-emerald-300 hover:shadow-xl"
               >
                 <div className="flex gap-4">
                   <div className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-2xl shadow-sm">
@@ -149,7 +149,7 @@ const FeaturedTutors = ({ tutors, isLoading }: FeaturedTutorsProps) => {
                     </div>
                   </div>
                   <div className="text-right flex-shrink-0">
-                    <div className="text-xl font-bold text-indigo-600">
+                    <div className="text-xl font-bold text-emerald-600">
                       ${tutor.hourlyRate}
                     </div>
                     <div className="text-xs text-slate-400">/hour</div>
@@ -161,7 +161,7 @@ const FeaturedTutors = ({ tutors, isLoading }: FeaturedTutorsProps) => {
                     {tutor.categories.slice(0, 3).map(({ category }) => (
                       <span
                         key={category.id}
-                        className="rounded-full bg-indigo-50 px-2 py-0.5 text-xs font-medium text-indigo-600"
+                        className="rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-600"
                       >
                         {category.name}
                       </span>
@@ -176,13 +176,13 @@ const FeaturedTutors = ({ tutors, isLoading }: FeaturedTutorsProps) => {
                 <div className="mt-4 grid grid-cols-2 gap-2">
                   <Link
                     href={`/tutors/${tutor.id}`}
-                    className="flex items-center justify-center gap-1.5 rounded-2xl border border-indigo-200 py-2 text-sm font-semibold text-indigo-700 hover:bg-indigo-50 transition"
+                    className="flex items-center justify-center gap-1.5 rounded-2xl border border-emerald-200 py-2 text-sm font-semibold text-emerald-700 hover:bg-emerald-50 transition"
                   >
                     <BookOpen size={14} /> Profile
                   </Link>
                   <Link
                     href={`/tutors/${tutor.id}`}
-                    className="flex items-center justify-center gap-1.5 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 py-2 text-sm font-semibold text-white hover:shadow-md hover:shadow-indigo-200 transition"
+                    className="flex items-center justify-center gap-1.5 rounded-2xl bg-gradient-to-r from-emerald-600 to-emerald-700 py-2 text-sm font-semibold text-white hover:shadow-md hover:shadow-emerald-200 transition"
                   >
                     <CalendarDays size={14} /> Book
                   </Link>

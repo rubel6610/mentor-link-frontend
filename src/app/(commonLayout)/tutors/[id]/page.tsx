@@ -88,7 +88,7 @@ const durationOptions = [
 const Stars = ({ rating, size = 16 }: { rating: number; size?: number }) => (
   <div className="flex gap-1">
     {[1, 2, 3, 4, 5].map((v) => (
-      <Star key={v} size={size} className={v <= Math.round(rating) ? "fill-amber-400 text-amber-400" : "text-slate-200"} />
+      <Star key={v} size={size} className={v <= Math.round(rating) ? "fill-orange-400 text-orange-400" : "text-slate-200"} />
     ))}
   </div>
 );
@@ -96,11 +96,11 @@ const Stars = ({ rating, size = 16 }: { rating: number; size?: number }) => (
 const TutorAvatar = ({ tutor }: { tutor: TutorProfile }) => {
   const initials = tutor.user.name.split(" ").map((n) => n[0]).join("").toUpperCase().slice(0, 2);
   const gradients = [
-    "from-indigo-400 to-cyan-400",
+    "from-emerald-400 to-cyan-400",
     "from-emerald-400 to-teal-400",
-    "from-rose-400 to-orange-400",
-    "from-purple-400 to-pink-400",
-    "from-blue-400 to-indigo-400",
+    "from-emerald-400 to-orange-400",
+    "from-emerald-400 to-teal-400",
+    "from-blue-400 to-emerald-400",
   ];
   const gradient = gradients[tutor.id % gradients.length];
   const imageUrl = getSafeImageUrl(tutor.imageUrl);
@@ -202,7 +202,7 @@ export default function TutorDetailsPage() {
 
   if (isLoading) return (
     <div className="flex min-h-screen items-center justify-center bg-slate-50">
-      <LoaderCircle className="h-8 w-8 animate-spin text-indigo-600" />
+      <LoaderCircle className="h-8 w-8 animate-spin text-emerald-600" />
     </div>
   );
 
@@ -220,7 +220,7 @@ export default function TutorDetailsPage() {
       {/* ─── HEADER AREA ─── */}
       <section className="bg-white border-b border-slate-200 pt-10 pb-20">
         <div className="mx-auto max-w-7xl px-6">
-          <Link href="/tutors" className="inline-flex items-center gap-2 text-sm font-bold text-slate-400 hover:text-indigo-600 transition-colors mb-10">
+          <Link href="/tutors" className="inline-flex items-center gap-2 text-sm font-bold text-slate-400 hover:text-emerald-600 transition-colors mb-10">
             <ArrowLeft size={16} /> Back to all tutors
           </Link>
 
@@ -234,13 +234,13 @@ export default function TutorDetailsPage() {
               </div>
               <h1 className="text-4xl md:text-5xl font-bold text-slate-900 tracking-tight">{tutor.user.name}</h1>
               <div className="flex flex-wrap items-center gap-6 text-sm font-medium text-slate-500">
-                <span className="flex items-center gap-2"><MapPin size={16} className="text-indigo-500" /> {tutor.location}</span>
-                <span className="flex items-center gap-2"><Mail size={16} className="text-indigo-500" /> {tutor.user.email}</span>
-                <span className="flex items-center gap-2"><BookOpen size={16} className="text-indigo-500" /> {tutor.experience} Years Experience</span>
+                <span className="flex items-center gap-2"><MapPin size={16} className="text-emerald-500" /> {tutor.location}</span>
+                <span className="flex items-center gap-2"><Mail size={16} className="text-emerald-500" /> {tutor.user.email}</span>
+                <span className="flex items-center gap-2"><BookOpen size={16} className="text-emerald-500" /> {tutor.experience} Years Experience</span>
               </div>
               <div className="flex flex-wrap gap-2 pt-2">
                 {tutor.categories.map(c => (
-                  <span key={c.categoryId} className="px-3 py-1 rounded-lg bg-indigo-50 text-indigo-700 text-xs font-bold border border-indigo-100">
+                  <span key={c.categoryId} className="px-3 py-1 rounded-lg bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-100">
                     {c.category.name}
                   </span>
                 ))}
@@ -251,7 +251,7 @@ export default function TutorDetailsPage() {
               <div className="text-4xl font-bold">${tutor.hourlyRate}</div>
               <div className="mt-6 pt-6 border-t border-white/10 flex items-center gap-3">
                 <div className="h-10 w-10 rounded-xl bg-white/10 flex items-center justify-center">
-                  <Star className="fill-amber-400 text-amber-400" size={20} />
+                  <Star className="fill-orange-400 text-orange-400" size={20} />
                 </div>
                 <div>
                   <div className="text-lg font-bold">{tutor.avgRating.toFixed(1)}</div>
@@ -270,7 +270,7 @@ export default function TutorDetailsPage() {
             {/* Bio Card */}
             <div className="bg-white border border-slate-200 rounded-[32px] p-8 shadow-sm">
               <h2 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                <Sparkles className="text-indigo-600" size={20} /> Professional Bio
+                <Sparkles className="text-emerald-600" size={20} /> Professional Bio
               </h2>
               <p className="text-slate-600 leading-relaxed whitespace-pre-wrap">{tutor.bio}</p>
             </div>
@@ -278,7 +278,7 @@ export default function TutorDetailsPage() {
             {/* Availability */}
             <div className="bg-white border border-slate-200 rounded-[32px] p-8 shadow-sm">
               <h2 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                <CalendarDays className="text-indigo-600" size={20} /> Weekly Availability
+                <CalendarDays className="text-emerald-600" size={20} /> Weekly Availability
               </h2>
               <div className="grid sm:grid-cols-2 gap-4">
                 {tutor.availability?.map((slot, i) => (
@@ -296,7 +296,7 @@ export default function TutorDetailsPage() {
             {/* Reviews */}
             <div className="bg-white border border-slate-200 rounded-[32px] p-8 shadow-sm">
               <h2 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-                <MessageSquareQuote className="text-indigo-600" size={20} /> Student Feedback
+                <MessageSquareQuote className="text-emerald-600" size={20} /> Student Feedback
               </h2>
               <div className="space-y-6">
                 {reviews.map(r => (
@@ -318,7 +318,7 @@ export default function TutorDetailsPage() {
 
           {/* Booking Sidebar */}
           <aside>
-            <div className="sticky top-24 bg-white border border-slate-200 rounded-[32px] p-8 shadow-xl shadow-indigo-100/50 overflow-hidden">
+            <div className="sticky top-24 bg-white border border-slate-200 rounded-[32px] p-8 shadow-xl shadow-emerald-100/50 overflow-hidden">
               <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
                 <CalendarDays size={120} />
               </div>
@@ -361,12 +361,12 @@ export default function TutorDetailsPage() {
                 <div className="pt-6 border-t border-slate-100">
                   <div className="flex items-center justify-between mb-6">
                     <div className="text-sm font-bold text-slate-500">Estimated Price</div>
-                    <div className="text-2xl font-bold text-indigo-600">${estimatedPrice.toFixed(2)}</div>
+                    <div className="text-2xl font-bold text-emerald-600">${estimatedPrice.toFixed(2)}</div>
                   </div>
                   <Button 
                     onClick={handleBooking}
                     disabled={isBooking}
-                    className="w-full h-14 rounded-2xl bg-indigo-600 text-white font-bold text-lg hover:bg-indigo-700 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-indigo-100"
+                    className="w-full h-14 rounded-2xl bg-emerald-600 text-white font-bold text-lg hover:bg-emerald-700 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-emerald-100"
                   >
                     {isBooking ? <LoaderCircle className="animate-spin" /> : "Pay & Book Session"}
                   </Button>

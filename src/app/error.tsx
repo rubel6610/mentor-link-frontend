@@ -18,7 +18,7 @@ export default function GlobalError({
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-slate-50 px-6 text-center">
-      <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-rose-50 text-rose-500 shadow-sm border border-rose-100">
+      <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-emerald-50 text-emerald-500 shadow-sm border border-emerald-100">
         <AlertCircle size={40} />
       </div>
       <h1 className="text-3xl font-black text-slate-900 tracking-tight mb-3">
@@ -31,7 +31,7 @@ export default function GlobalError({
       <div className="flex flex-col sm:flex-row gap-4">
         <Button
           onClick={() => reset()}
-          className="rounded-2xl bg-indigo-600 px-8 py-6 text-base font-bold text-white hover:bg-indigo-700 shadow-xl shadow-indigo-100 transition-all"
+          className="rounded-2xl bg-emerald-600 px-8 py-6 text-base font-bold text-white hover:bg-emerald-700 shadow-xl shadow-emerald-100 transition-all"
         >
           <RefreshCcw size={18} className="mr-2" /> Try Again
         </Button>

@@ -294,7 +294,7 @@ const AvailabilityPage = () => {
           </div>
 
           {!hasProfile && (
-            <div className="mb-6 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-700">
+            <div className="mb-6 rounded-2xl border border-orange-200 bg-orange-50 px-4 py-3 text-sm text-orange-700">
               Please create your tutor profile first. The backend blocks availability updates until a tutor profile exists.
             </div>
           )}

@@ -74,7 +74,7 @@ const StudentDashboardPage = () => {
   if (isAuthLoading || isLoading) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <LoaderCircle className="h-8 w-8 animate-spin text-indigo-600" />
+        <LoaderCircle className="h-8 w-8 animate-spin text-emerald-600" />
       </div>
     );
   }
@@ -82,28 +82,28 @@ const StudentDashboardPage = () => {
   return (
     <div className="space-y-10 max-w-8xl mx-auto ">
       {/* ─── LIGHT PREMIUM HERO ─── */}
-      <section className="relative overflow-hidden rounded-[40px] border border-indigo-100 bg-gradient-to-br from-white via-indigo-50/30 to-white p-10 shadow-sm">
-        <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-indigo-500/5 blur-3xl" />
-        <div className="absolute -left-20 -bottom-20 h-64 w-64 rounded-full bg-purple-500/5 blur-3xl" />
+      <section className="relative overflow-hidden rounded-[40px] border border-emerald-100 bg-gradient-to-br from-white via-emerald-50/30 to-white p-10 shadow-sm">
+        <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-emerald-500/5 blur-3xl" />
+        <div className="absolute -left-20 -bottom-20 h-64 w-64 rounded-full bg-emerald-500/5 blur-3xl" />
         
         <div className="relative z-10 flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
           <div className="space-y-5">
-            <div className="inline-flex items-center gap-2 rounded-full bg-indigo-100 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-indigo-600 border border-indigo-200">
+            <div className="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.2em] text-emerald-600 border border-emerald-200">
               <Zap size={14} className="fill-current" /> Overview
             </div>
             <div>
               <h1 className="text-4xl font-black tracking-tight text-slate-900 leading-tight">
-                Hello, <span className="text-indigo-600">{user?.name?.split(" ")[0]}!</span>
+                Hello, <span className="text-emerald-600">{user?.name?.split(" ")[0]}!</span>
               </h1>
               <p className="mt-4 max-w-lg text-lg font-medium text-slate-500 leading-relaxed">
-                You have <span className="text-indigo-600 font-bold">{stats.confirmed.length} sessions</span> scheduled. 
+                You have <span className="text-emerald-600 font-bold">{stats.confirmed.length} sessions</span> scheduled. 
                 Your learning journey is looking great this week.
               </p>
             </div>
           </div>
           
           <div className="flex flex-wrap gap-4">
-            <Link href="/tutors" className="group rounded-2xl bg-indigo-600 px-8 py-5 font-black text-white hover:bg-indigo-700 transition shadow-xl shadow-indigo-100 flex items-center gap-3">
+            <Link href="/tutors" className="group rounded-2xl bg-emerald-600 px-8 py-5 font-black text-white hover:bg-emerald-700 transition shadow-xl shadow-emerald-100 flex items-center gap-3">
               Book New Session <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
@@ -113,18 +113,18 @@ const StudentDashboardPage = () => {
       {/* ─── QUICK STATS ─── */}
       <div className="grid gap-6 md:grid-cols-3">
         {[
-          { label: "Total Investment", value: `$${stats.totalSpent.toFixed(0)}`, icon: Wallet, color: "text-indigo-600", bg: "bg-indigo-50", desc: "Knowledge assets" },
+          { label: "Total Investment", value: `$${stats.totalSpent.toFixed(0)}`, icon: Wallet, color: "text-emerald-600", bg: "bg-emerald-50", desc: "Knowledge assets" },
           { label: "Completed Lessons", value: stats.completed.length, icon: GraduationCap, color: "text-emerald-600", bg: "bg-emerald-50", desc: "Skills mastered" },
-          { label: "Avg. Learning Score", value: "4.9", icon: Star, color: "text-amber-600", bg: "bg-amber-50", desc: "Top 5% student" },
+          { label: "Avg. Learning Score", value: "4.9", icon: Star, color: "text-orange-600", bg: "bg-orange-50", desc: "Top 5% student" },
         ].map((s) => (
-          <div key={s.label} className="group rounded-[32px] border border-slate-100 bg-white p-8 transition-all hover:shadow-2xl hover:shadow-indigo-500/5">
+          <div key={s.label} className="group rounded-[32px] border border-slate-100 bg-white p-8 transition-all hover:shadow-2xl hover:shadow-emerald-500/5">
             <div className={`mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl ${s.bg} ${s.color} group-hover:scale-110 transition-transform`}>
               <s.icon size={28} />
             </div>
             <p className="text-xs font-black text-slate-400 uppercase tracking-widest">{s.label}</p>
             <p className="mt-2 text-3xl font-black text-slate-900 tracking-tight">{s.value}</p>
             <p className="mt-4 text-sm font-bold text-slate-400 flex items-center gap-2">
-              <Sparkles size={14} className="text-indigo-400" /> {s.desc}
+              <Sparkles size={14} className="text-emerald-400" /> {s.desc}
             </p>
           </div>
         ))}
@@ -135,17 +135,17 @@ const StudentDashboardPage = () => {
         <div className="lg:col-span-3 space-y-6">
           <div className="flex items-center justify-between px-2">
             <h2 className="text-2xl font-black text-slate-900 tracking-tight flex items-center gap-3">
-              Upcoming <span className="text-indigo-600">Focus</span>
+              Upcoming <span className="text-emerald-600">Focus</span>
             </h2>
-            <Link href="/student/bookings" className="text-sm font-bold text-slate-400 hover:text-indigo-600 flex items-center gap-1 transition-colors">
+            <Link href="/student/bookings" className="text-sm font-bold text-slate-400 hover:text-emerald-600 flex items-center gap-1 transition-colors">
               Full Schedule <ChevronRight size={16} />
             </Link>
           </div>
 
           {stats.nextSession ? (
-            <div className="group relative overflow-hidden rounded-[40px] border border-slate-100 bg-white p-10 transition-all hover:shadow-2xl hover:shadow-indigo-500/5 hover:border-indigo-100">
+            <div className="group relative overflow-hidden rounded-[40px] border border-slate-100 bg-white p-10 transition-all hover:shadow-2xl hover:shadow-emerald-500/5 hover:border-emerald-100">
               <div className="flex flex-col gap-8 md:flex-row md:items-center">
-                <div className="h-24 w-24 flex-shrink-0 rounded-[32px] bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-4xl font-black shadow-xl shadow-indigo-200 group-hover:rotate-3 transition-transform">
+                <div className="h-24 w-24 flex-shrink-0 rounded-[32px] bg-gradient-to-br from-emerald-500 to-emerald-600 flex items-center justify-center text-white text-4xl font-black shadow-xl shadow-emerald-200 group-hover:rotate-3 transition-transform">
                   {stats.nextSession.tutorProfile.user.name[0]}
                 </div>
                 <div className="flex-1 space-y-3">
@@ -154,11 +154,11 @@ const StudentDashboardPage = () => {
                   </div>
                   <h3 className="text-3xl font-black text-slate-900 tracking-tight">{stats.nextSession.tutorProfile.user.name}</h3>
                   <div className="flex flex-wrap gap-6 text-base font-bold text-slate-400">
-                    <span className="flex items-center gap-2"><CalendarDays size={18} className="text-indigo-500" /> {new Date(stats.nextSession.scheduledAt).toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' })}</span>
-                    <span className="flex items-center gap-2"><Clock3 size={18} className="text-indigo-500" /> {new Date(stats.nextSession.scheduledAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                    <span className="flex items-center gap-2"><CalendarDays size={18} className="text-emerald-500" /> {new Date(stats.nextSession.scheduledAt).toLocaleDateString(undefined, { weekday: 'long', month: 'short', day: 'numeric' })}</span>
+                    <span className="flex items-center gap-2"><Clock3 size={18} className="text-emerald-500" /> {new Date(stats.nextSession.scheduledAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                   </div>
                 </div>
-                <Link href="/student/bookings" className="rounded-2xl bg-slate-50 border border-slate-100 px-8 py-5 text-sm font-black text-slate-900 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all shadow-sm">
+                <Link href="/student/bookings" className="rounded-2xl bg-slate-50 border border-slate-100 px-8 py-5 text-sm font-black text-slate-900 hover:bg-emerald-600 hover:text-white hover:border-emerald-600 transition-all shadow-sm">
                   Details
                 </Link>
               </div>
@@ -169,7 +169,7 @@ const StudentDashboardPage = () => {
                 <CalendarDays size={40} />
               </div>
               <p className="text-xl font-bold text-slate-400">Ready for your next challenge?</p>
-              <Link href="/tutors" className="mt-6 inline-flex items-center gap-2 rounded-2xl bg-indigo-600 px-8 py-4 text-sm font-black text-white hover:bg-indigo-700 transition shadow-lg shadow-indigo-100">
+              <Link href="/tutors" className="mt-6 inline-flex items-center gap-2 rounded-2xl bg-emerald-600 px-8 py-4 text-sm font-black text-white hover:bg-emerald-700 transition shadow-lg shadow-emerald-100">
                 Book a Mentor <ArrowRight size={18} />
               </Link>
             </div>
@@ -181,10 +181,10 @@ const StudentDashboardPage = () => {
           <h2 className="text-2xl font-black text-slate-900 tracking-tight px-2">Quick Actions</h2>
           <div className="grid gap-4">
             {[
-              { href: "/student/profile", icon: Wallet, title: "Manage Profile", desc: "Account security & settings", color: "text-indigo-600", bg: "bg-indigo-50" },
+              { href: "/student/profile", icon: Wallet, title: "Manage Profile", desc: "Account security & settings", color: "text-emerald-600", bg: "bg-emerald-50" },
               { href: "/tutors", icon: BookOpen, title: "Explore Subjects", desc: "Discover new expert mentors", color: "text-emerald-600", bg: "bg-emerald-50" },
             ].map((action) => (
-              <Link key={action.title} href={action.href} className="group flex items-center justify-between rounded-[32px] border border-slate-100 bg-white p-7 transition-all hover:bg-slate-50 hover:border-indigo-100">
+              <Link key={action.title} href={action.href} className="group flex items-center justify-between rounded-[32px] border border-slate-100 bg-white p-7 transition-all hover:bg-slate-50 hover:border-emerald-100">
                 <div className="flex items-center gap-5">
                   <div className={`h-14 w-14 rounded-2xl ${action.bg} ${action.color} flex items-center justify-center group-hover:scale-110 transition-transform`}>
                     <action.icon size={24} />
@@ -194,7 +194,7 @@ const StudentDashboardPage = () => {
                     <p className="text-sm font-bold text-slate-400">{action.desc}</p>
                   </div>
                 </div>
-                <ChevronRight size={20} className="text-slate-200 group-hover:text-indigo-600 transition-all group-hover:translate-x-1" />
+                <ChevronRight size={20} className="text-slate-200 group-hover:text-emerald-600 transition-all group-hover:translate-x-1" />
               </Link>
             ))}
           </div>

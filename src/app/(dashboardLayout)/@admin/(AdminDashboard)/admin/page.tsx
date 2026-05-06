@@ -83,7 +83,7 @@ const AdminDashboardPage = () => {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
         <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-sm">
-          <LoaderCircle className="h-5 w-5 animate-spin text-rose-600" />
+          <LoaderCircle className="h-5 w-5 animate-spin text-emerald-600" />
           <span className="text-sm font-medium text-slate-600">Loading admin dashboard...</span>
         </div>
       </div>
@@ -91,17 +91,17 @@ const AdminDashboardPage = () => {
   }
 
   const cards = [
-    { label: "Total Users", value: stats?.totalUsers ?? 0, icon: Users, color: "text-indigo-600", bg: "bg-indigo-50" },
+    { label: "Total Users", value: stats?.totalUsers ?? 0, icon: Users, color: "text-emerald-600", bg: "bg-emerald-50" },
     { label: "Students", value: stats?.totalStudents ?? 0, icon: Users, color: "text-emerald-600", bg: "bg-emerald-50" },
     { label: "Tutors", value: stats?.totalTutors ?? 0, icon: TrendingUp, color: "text-sky-600", bg: "bg-sky-50" },
-    { label: "Bookings", value: stats?.totalBookings ?? 0, icon: BookOpen, color: "text-amber-600", bg: "bg-amber-50" },
-    { label: "Categories", value: stats?.totalCategories ?? 0, icon: FolderOpen, color: "text-rose-600", bg: "bg-rose-50" },
+    { label: "Bookings", value: stats?.totalBookings ?? 0, icon: BookOpen, color: "text-orange-600", bg: "bg-orange-50" },
+    { label: "Categories", value: stats?.totalCategories ?? 0, icon: FolderOpen, color: "text-emerald-600", bg: "bg-emerald-50" },
   ];
 
   return (
     <div className="space-y-6">
       {/* Hero */}
-      <section className="rounded-3xl bg-gradient-to-br from-rose-600 via-pink-600 to-orange-500 p-6 text-white shadow-lg">
+      <section className="rounded-3xl bg-gradient-to-br from-emerald-600 via-teal-600 to-orange-500 p-6 text-white shadow-lg">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div className="space-y-3">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em]">
@@ -109,7 +109,7 @@ const AdminDashboardPage = () => {
               Admin Control Panel
             </div>
             <h1 className="text-3xl font-bold tracking-tight">Platform Overview</h1>
-            <p className="text-sm text-rose-50/90 max-w-2xl">
+            <p className="text-sm text-emerald-50/90 max-w-2xl">
               Monitor platform-wide statistics, manage users, review bookings, and organize categories.
             </p>
           </div>
@@ -132,9 +132,9 @@ const AdminDashboardPage = () => {
       {/* Quick Links */}
       <div className="grid gap-4 md:grid-cols-3">
         {[
-          { title: "Manage Users", desc: "View all users, ban or unban accounts.", href: "/admin/users", color: "bg-indigo-600" },
+          { title: "Manage Users", desc: "View all users, ban or unban accounts.", href: "/admin/users", color: "bg-emerald-600" },
           { title: "View Bookings", desc: "See all session bookings across the platform.", href: "/admin/bookings", color: "bg-emerald-600" },
-          { title: "Manage Categories", desc: "Create or delete tutoring subject categories.", href: "/admin/categories", color: "bg-rose-600" },
+          { title: "Manage Categories", desc: "Create or delete tutoring subject categories.", href: "/admin/categories", color: "bg-emerald-600" },
         ].map((item) => (
           <a
             key={item.href}

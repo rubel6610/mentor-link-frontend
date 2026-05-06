@@ -52,8 +52,8 @@ const StudentSidebar = () => {
                 className={cn(
                   "flex min-w-fit items-center gap-3 rounded-xl border px-4 py-3 text-sm font-medium transition-colors",
                   isActive
-                    ? "border-indigo-200 bg-indigo-50 text-indigo-700"
-                    : "border-slate-200 text-slate-600 hover:border-indigo-100 hover:bg-slate-50 hover:text-slate-900",
+                    ? "border-emerald-200 bg-emerald-50 text-emerald-700"
+                    : "border-slate-200 text-slate-600 hover:border-emerald-100 hover:bg-slate-50 hover:text-slate-900",
                 )}
               >
                 <Icon className="h-4 w-4" />

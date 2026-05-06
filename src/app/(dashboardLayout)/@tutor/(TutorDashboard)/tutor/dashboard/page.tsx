@@ -161,7 +161,7 @@ const TutorDashboard = () => {
 
         <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
           <div className="flex items-center gap-3">
-            <Star className="h-5 w-5 text-amber-500 fill-amber-500" />
+            <Star className="h-5 w-5 text-orange-500 fill-orange-500" />
             <h2 className="text-sm font-semibold text-slate-500">Rating</h2>
           </div>
           <p className="mt-3 text-3xl font-bold text-slate-900">
@@ -216,7 +216,7 @@ const TutorDashboard = () => {
                         {[...Array(5)].map((_, i) => (
                           <Star 
                             key={i} 
-                            className={`h-3 w-3 ${i < review.rating ? "fill-amber-400 text-amber-400" : "text-slate-200"}`} 
+                            className={`h-3 w-3 ${i < review.rating ? "fill-orange-400 text-orange-400" : "text-slate-200"}`} 
                           />
                         ))}
                       </div>

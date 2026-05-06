@@ -9,7 +9,7 @@ const WhyMentorLink = () => {
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div>
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-indigo-100 px-4 py-1.5 text-xs font-semibold text-indigo-700">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-1.5 text-xs font-semibold text-emerald-700">
               <MessageSquareQuote size={12} /> Why MentorLink
             </div>
             <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">
@@ -28,7 +28,7 @@ const WhyMentorLink = () => {
                 "Direct booking — no middleman, no hidden fees",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3 text-slate-600">
-                  <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-indigo-600" />
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-emerald-600" />
                   {item}
                 </li>
               ))}
@@ -36,7 +36,7 @@ const WhyMentorLink = () => {
             <div className="mt-10">
               <Link
                 href="/register"
-                className="inline-flex items-center gap-2 rounded-xl bg-indigo-600 px-8 py-3 font-semibold text-white hover:bg-indigo-700 transition hover:shadow-lg hover:shadow-indigo-200"
+                className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-8 py-3 font-semibold text-white hover:bg-emerald-700 transition hover:shadow-lg hover:shadow-emerald-200"
               >
                 Get started free <ArrowRight size={16} />
               </Link>
@@ -49,7 +49,7 @@ const WhyMentorLink = () => {
                 icon: Users,
                 title: "For Students",
                 desc: "Book 1-on-1 sessions with experts, track learning progress, leave reviews.",
-                color: "bg-indigo-50 text-indigo-600",
+                color: "bg-emerald-50 text-emerald-600",
               },
               {
                 icon: ShieldCheck,
@@ -61,7 +61,7 @@ const WhyMentorLink = () => {
                 icon: Star,
                 title: "Star Ratings",
                 desc: "Real reviews from real students to help you choose the best match.",
-                color: "bg-amber-50 text-amber-600",
+                color: "bg-orange-50 text-orange-600",
               },
               {
                 icon: CalendarDays,
@@ -72,7 +72,7 @@ const WhyMentorLink = () => {
             ].map((card) => (
               <div
                 key={card.title}
-                className="rounded-3xl border border-slate-100 p-6 hover:border-indigo-100 hover:shadow-sm transition"
+                className="rounded-3xl border border-slate-100 p-6 hover:border-emerald-100 hover:shadow-sm transition"
               >
                 <div className={`mb-4 inline-flex rounded-2xl p-3 ${card.color}`}>
                   <card.icon size={20} />

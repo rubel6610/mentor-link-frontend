@@ -30,9 +30,9 @@ type AdminUser = {
 };
 
 const roleBadge: Record<string, string> = {
-  STUDENT: "bg-indigo-50 text-indigo-700 border-indigo-200",
+  STUDENT: "bg-emerald-50 text-emerald-700 border-emerald-200",
   TUTOR: "bg-sky-50 text-sky-700 border-sky-200",
-  ADMIN: "bg-rose-50 text-rose-700 border-rose-200",
+  ADMIN: "bg-emerald-50 text-emerald-700 border-emerald-200",
 };
 
 const AdminUsersPage = () => {
@@ -101,7 +101,7 @@ const AdminUsersPage = () => {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
         <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-sm">
-          <LoaderCircle className="h-5 w-5 animate-spin text-rose-600" />
+          <LoaderCircle className="h-5 w-5 animate-spin text-emerald-600" />
           <span className="text-sm font-medium text-slate-600">Loading users...</span>
         </div>
       </div>
@@ -111,7 +111,7 @@ const AdminUsersPage = () => {
   return (
     <div className="space-y-6">
       {/* Hero */}
-      <section className="rounded-3xl bg-gradient-to-br from-rose-600 via-pink-600 to-orange-500 p-6 text-white shadow-lg">
+      <section className="rounded-3xl bg-gradient-to-br from-emerald-600 via-teal-600 to-orange-500 p-6 text-white shadow-lg">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div className="space-y-3">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em]">
@@ -119,7 +119,7 @@ const AdminUsersPage = () => {
               User Management
             </div>
             <h1 className="text-3xl font-bold tracking-tight">All Users</h1>
-            <p className="text-sm text-rose-50/90">View, search, and manage all registered users. Ban or unban accounts.</p>
+            <p className="text-sm text-emerald-50/90">View, search, and manage all registered users. Ban or unban accounts.</p>
           </div>
           <div className="inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold">
             {filtered.length} of {users.length} users
@@ -135,7 +135,7 @@ const AdminUsersPage = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search by name, email, or role..."
-          className="w-full rounded-2xl border border-slate-200 bg-white py-3 pl-11 pr-4 text-sm text-slate-700 outline-none focus:border-rose-400 focus:ring-2 focus:ring-rose-100"
+          className="w-full rounded-2xl border border-slate-200 bg-white py-3 pl-11 pr-4 text-sm text-slate-700 outline-none focus:border-emerald-400 focus:ring-2 focus:ring-emerald-100"
         />
       </div>
 

@@ -25,7 +25,7 @@ const HowItWorks = () => {
     <section id="how-it-works" className="bg-white py-20">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-12 text-center">
-          <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-indigo-100 px-4 py-1.5 text-xs font-semibold text-indigo-700">
+          <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-1.5 text-xs font-semibold text-emerald-700">
             <Zap size={12} /> How it works
           </div>
           <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">
@@ -36,12 +36,12 @@ const HowItWorks = () => {
           {steps.map((step, i) => (
             <div
               key={step.title}
-              className="rounded-3xl border border-slate-100 bg-slate-50 p-8 text-center hover:border-indigo-200 hover:shadow-md transition-all"
+              className="rounded-3xl border border-slate-100 bg-slate-50 p-8 text-center hover:border-emerald-200 hover:shadow-md transition-all"
             >
-              <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-indigo-600 text-white">
+              <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-600 text-white">
                 <step.icon size={22} />
               </div>
-              <div className="mb-2 text-xs font-semibold uppercase tracking-widest text-indigo-500">
+              <div className="mb-2 text-xs font-semibold uppercase tracking-widest text-emerald-500">
                 Step {i + 1}
               </div>
               <h3 className="mb-3 text-xl font-bold text-slate-900">

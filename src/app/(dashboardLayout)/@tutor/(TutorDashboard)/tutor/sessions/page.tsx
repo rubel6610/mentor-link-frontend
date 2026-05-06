@@ -42,10 +42,10 @@ type ApiResponse<T> = {
 };
 
 const statusTone: Record<BookingStatus, string> = {
-  PENDING: "border-amber-200 bg-amber-50 text-amber-700",
+  PENDING: "border-orange-200 bg-orange-50 text-orange-700",
   CONFIRMED: "border-sky-200 bg-sky-50 text-sky-700",
   COMPLETED: "border-emerald-200 bg-emerald-50 text-emerald-700",
-  CANCELLED: "border-rose-200 bg-rose-50 text-rose-700",
+  CANCELLED: "border-emerald-200 bg-emerald-50 text-emerald-700",
 };
 
 const TutorSessionsPage = () => {

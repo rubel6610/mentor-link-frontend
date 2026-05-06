@@ -37,10 +37,10 @@ type StudentBooking = {
 type ReviewDraft = { bookingId: number; rating: number; comment: string };
 
 const statusTone: Record<BookingStatus, string> = {
-  PENDING: "border-amber-200 bg-amber-50 text-amber-700",
+  PENDING: "border-orange-200 bg-orange-50 text-orange-700",
   CONFIRMED: "border-sky-200 bg-sky-50 text-sky-700",
   COMPLETED: "border-emerald-200 bg-emerald-50 text-emerald-700",
-  CANCELLED: "border-rose-200 bg-rose-50 text-rose-700",
+  CANCELLED: "border-emerald-200 bg-emerald-50 text-emerald-700",
 };
 
 const StudentBookingsPage = () => {
@@ -78,7 +78,7 @@ const StudentBookingsPage = () => {
         await Swal.fire({
           icon: "error",
           title: "Unable to load bookings",
-          confirmButtonColor: "#4f46e5",
+          confirmButtonColor: "#059669",
         });
       } finally {
         setIsLoadingBookings(false);
@@ -106,7 +106,7 @@ const StudentBookingsPage = () => {
         icon: "success",
         title: "Payment Successful",
         text: "Your booking is now confirmed. Stripe will finalize the transaction shortly.",
-        confirmButtonColor: "#4f46e5",
+        confirmButtonColor: "#059669",
       });
     }
   }, [isLoadingBookings]);
@@ -142,7 +142,7 @@ const StudentBookingsPage = () => {
         icon: "error",
         title: "Cancel failed",
         text: error.message,
-        confirmButtonColor: "#4f46e5",
+        confirmButtonColor: "#059669",
       });
     } finally {
       setUpdatingBookingId(null);
@@ -178,7 +178,7 @@ const StudentBookingsPage = () => {
         icon: "error",
         title: "Payment unavailable",
         text: error.message,
-        confirmButtonColor: "#4f46e5",
+        confirmButtonColor: "#059669",
       });
       setPayingBookingId(null);
     }
@@ -215,7 +215,7 @@ const StudentBookingsPage = () => {
         icon: "error",
         title: "Review failed",
         text: error.message,
-        confirmButtonColor: "#4f46e5",
+        confirmButtonColor: "#059669",
       });
     } finally {
       setSubmittingReview(false);
@@ -234,7 +234,7 @@ const StudentBookingsPage = () => {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
         <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-sm">
-          <LoaderCircle className="h-5 w-5 animate-spin text-indigo-600" />
+          <LoaderCircle className="h-5 w-5 animate-spin text-emerald-600" />
           <span className="text-sm font-medium text-slate-600">
             Loading bookings...
           </span>
@@ -252,12 +252,12 @@ const StudentBookingsPage = () => {
 
   return (
     <div className="space-y-6">
-      <section className="rounded-3xl bg-gradient-to-br from-indigo-600 via-blue-600 to-cyan-500 p-6 text-white shadow-lg">
+      <section className="rounded-3xl bg-gradient-to-br from-emerald-600 via-blue-600 to-cyan-500 p-6 text-white shadow-lg">
         <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] mb-3">
           <Sparkles className="h-3.5 w-3.5" /> My Bookings
         </div>
         <h1 className="text-3xl font-bold tracking-tight">Booking History</h1>
-        <p className="mt-2 text-sm text-indigo-50/90">
+        <p className="mt-2 text-sm text-emerald-50/90">
           All your sessions — upcoming, completed, and cancelled.
         </p>
       </section>
@@ -266,15 +266,15 @@ const StudentBookingsPage = () => {
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
         {[
           { label: "Total", key: "ALL", color: "text-slate-900" },
-          { label: "Pending", key: "PENDING", color: "text-amber-700" },
+          { label: "Pending", key: "PENDING", color: "text-orange-700" },
           { label: "Upcoming", key: "CONFIRMED", color: "text-sky-700" },
           { label: "Completed", key: "COMPLETED", color: "text-emerald-700" },
-          { label: "Cancelled", key: "CANCELLED", color: "text-rose-700" },
+          { label: "Cancelled", key: "CANCELLED", color: "text-emerald-700" },
         ].map((s) => (
           <button
             key={s.key}
             onClick={() => setStatusFilter(s.key as BookingStatus | "ALL")}
-            className={`rounded-3xl border p-4 text-left shadow-sm transition-all ${statusFilter === s.key ? "border-indigo-300 bg-indigo-50" : "border-slate-200 bg-white hover:border-indigo-200"}`}
+            className={`rounded-3xl border p-4 text-left shadow-sm transition-all ${statusFilter === s.key ? "border-emerald-300 bg-emerald-50" : "border-slate-200 bg-white hover:border-emerald-200"}`}
           >
             <p className="text-sm text-slate-500">{s.label}</p>
             <p className={`mt-1 text-2xl font-bold ${s.color}`}>
@@ -321,15 +321,15 @@ const StudentBookingsPage = () => {
                     </div>
                     <div className="grid gap-2 text-sm text-slate-600 sm:grid-cols-2 xl:grid-cols-4">
                       <div className="flex items-center gap-2">
-                        <CalendarDays className="h-4 w-4 text-indigo-600" />
+                        <CalendarDays className="h-4 w-4 text-emerald-600" />
                         {new Date(booking.scheduledAt).toLocaleString()}
                       </div>
                       <div className="flex items-center gap-2">
-                        <Clock3 className="h-4 w-4 text-indigo-600" />
+                        <Clock3 className="h-4 w-4 text-emerald-600" />
                         {booking.duration} min
                       </div>
                       <div className="flex items-center gap-2">
-                        <Wallet className="h-4 w-4 text-indigo-600" />$
+                        <Wallet className="h-4 w-4 text-emerald-600" />$
                         {booking.totalPrice.toFixed(2)}
                       </div>
                     </div>
@@ -345,7 +345,7 @@ const StudentBookingsPage = () => {
                       <Button
                         onClick={() => handlePayBooking(booking.id)}
                         disabled={payingBookingId === booking.id}
-                        className="rounded-2xl bg-indigo-600 text-white hover:bg-indigo-700"
+                        className="rounded-2xl bg-emerald-600 text-white hover:bg-emerald-700"
                       >
                         {payingBookingId === booking.id ? (
                           <>
@@ -363,7 +363,7 @@ const StudentBookingsPage = () => {
                       <Button
                         onClick={() => handleCancelBooking(booking.id)}
                         disabled={updatingBookingId === booking.id}
-                        className="rounded-2xl bg-rose-600 text-white hover:bg-rose-700"
+                        className="rounded-2xl bg-emerald-600 text-white hover:bg-emerald-700"
                       >
                         {updatingBookingId === booking.id ? (
                           <>
@@ -387,14 +387,14 @@ const StudentBookingsPage = () => {
                           })
                         }
                         disabled={alreadyReviewed}
-                        className="rounded-2xl bg-indigo-600 text-white hover:bg-indigo-700"
+                        className="rounded-2xl bg-emerald-600 text-white hover:bg-emerald-700"
                       >
                         <MessageSquareQuote className="h-4 w-4" />
                         {alreadyReviewed ? "Review submitted" : "Leave review"}
                       </Button>
                     )}
                     {booking.status === "CANCELLED" && (
-                      <div className="rounded-2xl border border-rose-100 bg-rose-50 px-4 py-3 text-sm text-rose-600">
+                      <div className="rounded-2xl border border-emerald-100 bg-emerald-50 px-4 py-3 text-sm text-emerald-600">
                         Session cancelled.
                       </div>
                     )}
@@ -431,10 +431,10 @@ const StudentBookingsPage = () => {
                           cur ? { ...cur, rating: v } : cur,
                         )
                       }
-                      className="rounded-full p-2 hover:bg-amber-50"
+                      className="rounded-full p-2 hover:bg-orange-50"
                     >
                       <Star
-                        className={`h-6 w-6 ${v <= reviewDraft.rating ? "fill-amber-400 text-amber-400" : "text-slate-300"}`}
+                        className={`h-6 w-6 ${v <= reviewDraft.rating ? "fill-orange-400 text-orange-400" : "text-slate-300"}`}
                       />
                     </button>
                   ))}
@@ -467,7 +467,7 @@ const StudentBookingsPage = () => {
               <Button
                 onClick={handleSubmitReview}
                 disabled={submittingReview}
-                className="rounded-2xl bg-indigo-600 text-white hover:bg-indigo-700"
+                className="rounded-2xl bg-emerald-600 text-white hover:bg-emerald-700"
               >
                 {submittingReview ? (
                   <>

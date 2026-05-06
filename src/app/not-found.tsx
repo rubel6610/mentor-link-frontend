@@ -12,7 +12,7 @@ export default function NotFound() {
           404
         </div>
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="flex h-24 w-24 items-center justify-center rounded-[32px] bg-indigo-600 text-white shadow-2xl shadow-indigo-200 animate-bounce-slow">
+          <div className="flex h-24 w-24 items-center justify-center rounded-[32px] bg-emerald-600 text-white shadow-2xl shadow-emerald-200 animate-bounce-slow">
             <Search size={40} />
           </div>
         </div>
