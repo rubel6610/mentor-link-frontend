@@ -14,7 +14,7 @@ const HeroSection = () => {
       <div className="relative container mx-auto px-6 py-24 md:py-32">
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6">
-            <span className="text-sm font-semibold">✨ SkillBridge</span>
+            <span className="text-sm font-semibold">✨ MentorLink</span>
             <span className="text-xs bg-white/30 rounded-full px-2 py-0.5">v2.0</span>
           </div>
           
@@ -23,7 +23,7 @@ const HeroSection = () => {
           </h1>
           
           <p className="text-lg md:text-xl text-indigo-100 max-w-2xl mx-auto mb-10">
-            SkillBridge connects passionate learners with expert tutors. 
+            MentorLink connects passionate learners with expert tutors. 
             Browse profiles, check availability, and book sessions instantly — all in one seamless platform.
           </p>
 

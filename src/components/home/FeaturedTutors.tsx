@@ -11,6 +11,7 @@ import {
   ShieldCheck,
   Star,
 } from "lucide-react";
+import { getSafeImageUrl } from "@/lib/images";
 
 export type TutorProfile = {
   id: number;
@@ -56,9 +57,11 @@ export const TutorAvatar = ({ tutor }: { tutor: TutorProfile }) => {
     "from-indigo-400 to-purple-500",
   ];
   const gradient = gradients[tutor.id % gradients.length];
-  return tutor.imageUrl ? (
+  const imageUrl = getSafeImageUrl(tutor.imageUrl);
+
+  return imageUrl ? (
     <Image
-      src={tutor.imageUrl}
+      src={imageUrl}
       alt={tutor.user.name}
       width={150}
       height={150}

@@ -141,7 +141,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-10 flex flex-col md:flex-row justify-center items-center gap-6">
           <p className="text-sm font-bold text-slate-400">
-            © {currentYear} SkillBridge. Built with excellence.
+            © {currentYear} MentorLink. Built with excellence.
           </p>
         </div>
       </div>

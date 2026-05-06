@@ -232,7 +232,7 @@ const NavBar = () => {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="flex items-center justify-center rounded-2xl bg-indigo-600 py-4 text-base font-bold text-white shadow-xl shadow-indigo-200"
                 >
-                  Join SkillBridge
+                  Join MentorLink
                 </Link>
               </div>
             )}

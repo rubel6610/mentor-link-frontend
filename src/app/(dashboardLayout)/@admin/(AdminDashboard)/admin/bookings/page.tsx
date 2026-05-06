@@ -5,19 +5,22 @@ import Swal from "sweetalert2";
 import { CalendarDays, Clock3, LoaderCircle, Search, Sparkles, Wallet, BookOpen } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
 
-type BookingStatus = "CONFIRMED" | "COMPLETED" | "CANCELLED";
+type BookingStatus = "PENDING" | "CONFIRMED" | "COMPLETED" | "CANCELLED";
+type PaymentStatus = "PENDING" | "PAID" | "FAILED" | "REFUNDED";
 type AdminBooking = {
   id: number;
   scheduledAt: string;
   duration: number;
   totalPrice: number;
   status: BookingStatus;
+  paymentStatus?: PaymentStatus;
   note: string | null;
   student: { id: number; name: string; email: string };
   tutorProfile: { id: number; user: { id: number; name: string; email: string } };
 };
 
 const statusTone: Record<BookingStatus, string> = {
+  PENDING: "border-amber-200 bg-amber-50 text-amber-700",
   CONFIRMED: "border-sky-200 bg-sky-50 text-sky-700",
   COMPLETED: "border-emerald-200 bg-emerald-50 text-emerald-700",
   CANCELLED: "border-rose-200 bg-rose-50 text-rose-700",
@@ -82,7 +85,7 @@ const AdminBookingsPage = () => {
             className="w-full rounded-2xl border border-slate-200 bg-white py-3 pl-11 pr-4 text-sm outline-none focus:border-rose-400 focus:ring-2 focus:ring-rose-100" />
         </div>
         <div className="flex gap-2 flex-wrap">
-          {(["ALL", "CONFIRMED", "COMPLETED", "CANCELLED"] as const).map((s) => (
+          {(["ALL", "PENDING", "CONFIRMED", "COMPLETED", "CANCELLED"] as const).map((s) => (
             <button key={s} onClick={() => setStatusFilter(s)}
               className={`rounded-2xl border px-3 py-2 text-xs font-semibold transition-colors ${statusFilter === s ? "border-rose-300 bg-rose-50 text-rose-700" : "border-slate-200 bg-white text-slate-600 hover:bg-slate-50"}`}>
               {s}
@@ -99,6 +102,7 @@ const AdminBookingsPage = () => {
             <div className="flex flex-wrap items-center gap-3 mb-3">
               <h3 className="font-semibold text-slate-900">Booking #{b.id}</h3>
               <span className={`rounded-full border px-2.5 py-0.5 text-xs font-semibold ${statusTone[b.status]}`}>{b.status}</span>
+              {b.paymentStatus && <span className="rounded-full border border-slate-200 bg-slate-50 px-2.5 py-0.5 text-xs font-semibold text-slate-600">Payment: {b.paymentStatus}</span>}
             </div>
             <div className="grid gap-2 text-sm text-slate-600 sm:grid-cols-2 xl:grid-cols-4">
               <div className="flex items-center gap-2"><BookOpen className="h-4 w-4 text-indigo-500" />Student: {b.student.name}</div>

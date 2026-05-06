@@ -31,7 +31,7 @@ const StudentProfilePage = () => {
           {user?.name ? `${user.name}'s Profile` : "Student Profile"}
         </h1>
         <p className="mt-2 max-w-2xl text-sm text-indigo-50/90">
-          Your account information registered with SkillBridge.
+          Your account information registered with MentorLink.
         </p>
       </section>
 

@@ -46,7 +46,7 @@ const StudentSection = () => {
             Your Learning Journey, <br />Simplified
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-            SkillBridge gives students everything you need to discover, connect, and learn from the best tutors worldwide.
+            MentorLink gives students everything you need to discover, connect, and learn from the best tutors worldwide.
           </p>
         </div>
 

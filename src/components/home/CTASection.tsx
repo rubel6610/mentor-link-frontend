@@ -13,7 +13,7 @@ const CTASection = () => {
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-lg text-indigo-100">
           Join thousands of students already mastering new skills with
-          SkillBridge tutors.
+          MentorLink tutors.
         </p>
         <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
           <Link

@@ -1,12 +1,12 @@
-# 🎓 SkillBridge Frontend
+# 🎓 MentorLink Frontend
 
-SkillBridge is a premium 1-on-1 tutoring marketplace that connects passionate learners with expert mentors. This repository contains the **Next.js** frontend, featuring a stunning, responsive UI designed for a seamless learning experience.
+MentorLink is a premium 1-on-1 tutoring marketplace that connects passionate learners with expert mentors. This repository contains the **Next.js** frontend, featuring a stunning, responsive UI designed for a seamless learning experience.
 
 ## 🔗 Quick Links
 
-- **Frontend GitHub:** [https://github.com/rubel6610/skillbridge-frontend](https://github.com/rubel6610/skillbridge-frontend)
+- **Frontend GitHub:** [https://github.com/rubel6610/mentorlink-frontend](https://github.com/rubel6610/mentorlink-frontend)
 - **Backend GitHub:** [https://github.com/rubel6610/skill-bridge](https://github.com/rubel6610/skill-bridge)
-- **Live Site:** [https://skillbridge-demo.vercel.app](https://skillbridge-frontend-gamma.vercel.app/) (Replace with your actual URL)
+- **Live Site:** [https://mentorlink-demo.vercel.app](https://mentorlink-frontend-gamma.vercel.app/) (Replace with your actual URL)
 - **Backend API:** [Render](https://skill-bridge-zp3v.onrender.com) (Replace with your actual URL)
 
 
@@ -55,8 +55,8 @@ SkillBridge is a premium 1-on-1 tutoring marketplace that connects passionate le
 
 ### 2. Installation
 ```bash
-git clone https://github.com/rubel6610/skillbridge-frontend.git
-cd skillbridge-frontend
+git clone https://github.com/rubel6610/mentorlink-frontend.git
+cd mentorlink-frontend
 npm install
 ```
 
@@ -64,6 +64,8 @@ npm install
 Create a `.env` file in the root directory:
 ```env
 NEXT_PUBLIC_BASE_URL=http://localhost:5000/api
+
+Payments are handled through the backend Stripe Checkout flow. Students are redirected to Stripe when booking a tutor session, then returned to `/student/bookings` after payment.
 ```
 
 ### 4. Run Development Server
@@ -75,7 +77,7 @@ Open [http://localhost:3000](http://localhost:3000) to see the application.
 ---
 
 ## 📸 Design Philosophy
-SkillBridge uses a **Premium Light Theme** characterized by:
+MentorLink uses a **Premium Light Theme** characterized by:
 - **Luminous Layouts:** High-contrast Slate-900 typography on clean White/Indigo-50 backgrounds.
 - **Glassmorphism:** Subtle borders and soft indigo shadows for a modern, "floating" UI feel.
 - **Modular Components:** Refactored sections for maximum maintainability and performance.

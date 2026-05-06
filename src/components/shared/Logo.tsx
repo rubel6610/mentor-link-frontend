@@ -26,7 +26,7 @@ const Logo = ({ variant = "default" }: LogoProps) => {
             : "bg-gradient-to-r from-indigo-600 to-indigo-800 bg-clip-text text-transparent"
         )}
       >
-        SkillBridge
+        MentorLink
       </span>
     </Link>
   );

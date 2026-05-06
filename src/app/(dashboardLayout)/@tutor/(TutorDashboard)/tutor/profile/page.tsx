@@ -20,6 +20,7 @@ import { useAuth } from '@/hooks/useAuth'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
+import { getSafeImageUrl } from '@/lib/images'
 
 type TutorProfileFormData = {
   bio: string
@@ -208,13 +209,26 @@ const ProfilePage = () => {
 
     setIsSubmitting(true)
 
+    const safeImageUrl = getSafeImageUrl(data.imageUrl)
+
+    if (data.imageUrl.trim() && !safeImageUrl) {
+      await Swal.fire({
+        icon: 'warning',
+        title: 'Invalid image URL',
+        text: 'Use a full http/https URL, a local path starting with /, or leave the image field empty.',
+        confirmButtonColor: '#0284c7',
+      })
+      setIsSubmitting(false)
+      return
+    }
+
     const payload = {
       bio: data.bio.trim(),
       categoryIds: data.categoryIds.map((id) => Number(id)),
       hourlyRate: Number(data.hourlyRate),
       experience: Number(data.experience),
       location: data.location.trim(),
-      imageUrl: data.imageUrl.trim(),
+      imageUrl: safeImageUrl ?? '',
     }
 
     try {

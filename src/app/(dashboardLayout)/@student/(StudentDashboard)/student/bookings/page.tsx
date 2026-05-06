@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import {
   CalendarDays,
   Clock3,
+  CreditCard,
   LoaderCircle,
   MessageSquareQuote,
   Sparkles,
@@ -17,7 +18,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useAuth } from "@/hooks/useAuth";
 
-type BookingStatus = "CONFIRMED" | "COMPLETED" | "CANCELLED";
+type BookingStatus = "PENDING" | "CONFIRMED" | "COMPLETED" | "CANCELLED";
+type PaymentStatus = "PENDING" | "PAID" | "FAILED" | "REFUNDED";
 type StudentBooking = {
   id: number;
   scheduledAt: string;
@@ -25,6 +27,7 @@ type StudentBooking = {
   totalPrice: number;
   note: string | null;
   status: BookingStatus;
+  paymentStatus?: PaymentStatus;
   tutorProfile: {
     id: number;
     bio?: string;
@@ -34,6 +37,7 @@ type StudentBooking = {
 type ReviewDraft = { bookingId: number; rating: number; comment: string };
 
 const statusTone: Record<BookingStatus, string> = {
+  PENDING: "border-amber-200 bg-amber-50 text-amber-700",
   CONFIRMED: "border-sky-200 bg-sky-50 text-sky-700",
   COMPLETED: "border-emerald-200 bg-emerald-50 text-emerald-700",
   CANCELLED: "border-rose-200 bg-rose-50 text-rose-700",
@@ -47,6 +51,7 @@ const StudentBookingsPage = () => {
   const [updatingBookingId, setUpdatingBookingId] = useState<number | null>(
     null,
   );
+  const [payingBookingId, setPayingBookingId] = useState<number | null>(null);
   const [submittingReview, setSubmittingReview] = useState(false);
   const [reviewedBookingIds, setReviewedBookingIds] = useState<number[]>([]);
   const [reviewDraft, setReviewDraft] = useState<ReviewDraft | null>(null);
@@ -81,6 +86,18 @@ const StudentBookingsPage = () => {
     };
     fetchBookings();
   }, [baseUrl, token]);
+
+  useEffect(() => {
+    const payment = new URLSearchParams(window.location.search).get("payment");
+    if (payment === "success") {
+      Swal.fire({
+        icon: "success",
+        title: "Payment Successful",
+        text: "Your booking will show as confirmed after Stripe verifies the payment.",
+        confirmButtonColor: "#4f46e5",
+      });
+    }
+  }, []);
 
   const handleCancelBooking = async (bookingId: number) => {
     if (!token) return;
@@ -117,6 +134,41 @@ const StudentBookingsPage = () => {
       });
     } finally {
       setUpdatingBookingId(null);
+    }
+  };
+
+  const handlePayBooking = async (bookingId: number) => {
+    if (!token) return;
+    setPayingBookingId(bookingId);
+    try {
+      const res = await fetch(`${baseUrl}/booking/checkout/${bookingId}`, {
+        method: "POST",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      const result = await res.json().catch(() => null);
+
+      if (!res.ok) {
+        throw new Error(result?.message || "Unable to create checkout");
+      }
+
+      const checkoutUrl =
+        result?.data?.checkoutUrl ||
+        result?.data?.paymentUrl ||
+        result?.data?.url;
+
+      if (!checkoutUrl) {
+        throw new Error("Stripe checkout URL was not returned.");
+      }
+
+      window.location.href = checkoutUrl;
+    } catch (error: any) {
+      await Swal.fire({
+        icon: "error",
+        title: "Payment unavailable",
+        text: error.message,
+        confirmButtonColor: "#4f46e5",
+      });
+      setPayingBookingId(null);
     }
   };
 
@@ -180,6 +232,7 @@ const StudentBookingsPage = () => {
 
   const counts = {
     ALL: bookings.length,
+    PENDING: bookings.filter((b) => b.status === "PENDING").length,
     CONFIRMED: bookings.filter((b) => b.status === "CONFIRMED").length,
     COMPLETED: bookings.filter((b) => b.status === "COMPLETED").length,
     CANCELLED: bookings.filter((b) => b.status === "CANCELLED").length,
@@ -198,9 +251,10 @@ const StudentBookingsPage = () => {
       </section>
 
       {/* Stats */}
-      <div className="grid gap-4 sm:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
         {[
           { label: "Total", key: "ALL", color: "text-slate-900" },
+          { label: "Pending", key: "PENDING", color: "text-amber-700" },
           { label: "Upcoming", key: "CONFIRMED", color: "text-sky-700" },
           { label: "Completed", key: "COMPLETED", color: "text-emerald-700" },
           { label: "Cancelled", key: "CANCELLED", color: "text-rose-700" },
@@ -227,6 +281,10 @@ const StudentBookingsPage = () => {
         ) : (
           filtered.map((booking) => {
             const alreadyReviewed = reviewedBookingIds.includes(booking.id);
+            const canPay =
+              booking.status === "PENDING" &&
+              booking.paymentStatus !== "PAID" &&
+              booking.paymentStatus !== "REFUNDED";
             return (
               <article
                 key={booking.id}
@@ -243,6 +301,11 @@ const StudentBookingsPage = () => {
                       >
                         {booking.status}
                       </span>
+                      {booking.paymentStatus && (
+                        <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-0.5 text-xs font-semibold text-slate-600">
+                          Payment: {booking.paymentStatus}
+                        </span>
+                      )}
                     </div>
                     <div className="grid gap-2 text-sm text-slate-600 sm:grid-cols-2 xl:grid-cols-4">
                       <div className="flex items-center gap-2">
@@ -266,7 +329,25 @@ const StudentBookingsPage = () => {
                   </div>
 
                   <div className="flex flex-col gap-2 sm:min-w-52">
-                    {booking.status === "CONFIRMED" && (
+                    {canPay && (
+                      <Button
+                        onClick={() => handlePayBooking(booking.id)}
+                        disabled={payingBookingId === booking.id}
+                        className="rounded-2xl bg-indigo-600 text-white hover:bg-indigo-700"
+                      >
+                        {payingBookingId === booking.id ? (
+                          <>
+                            <LoaderCircle className="h-4 w-4 animate-spin" />{" "}
+                            Opening payment...
+                          </>
+                        ) : (
+                          <>
+                            <CreditCard className="h-4 w-4" /> Pay now
+                          </>
+                        )}
+                      </Button>
+                    )}
+                    {(booking.status === "CONFIRMED" || booking.status === "PENDING") && (
                       <Button
                         onClick={() => handleCancelBooking(booking.id)}
                         disabled={updatingBookingId === booking.id}

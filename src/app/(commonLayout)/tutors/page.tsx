@@ -1,24 +1,17 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
-import Swal from "sweetalert2";
 import {
-  CalendarDays,
-  Clock3,
   LoaderCircle,
   MapPin,
   Search,
   ShieldCheck,
   Star,
   Wallet,
-  X,
   ChevronRight,
-  Filter,
-  BookOpen,
   LayoutGrid,
 } from "lucide-react";
-import { useAuth } from "@/hooks/useAuth";
+import { getSafeImageUrl } from "@/lib/images";
 import Link from "next/link";
 
 // Types
@@ -69,10 +62,11 @@ const TutorAvatar = ({ tutor }: { tutor: TutorProfile }) => {
     "from-blue-400 to-indigo-400",
   ];
   const gradient = gradients[tutor.id % gradients.length];
+  const imageUrl = getSafeImageUrl(tutor.imageUrl);
 
-  return tutor.imageUrl ? (
+  return imageUrl ? (
     <img
-      src={tutor.imageUrl}
+      src={imageUrl}
       alt={tutor.user.name}
       className="h-full w-full object-cover rounded-2xl"
     />
@@ -88,9 +82,7 @@ const TutorAvatar = ({ tutor }: { tutor: TutorProfile }) => {
 };
 
 export default function BrowseTutorPage() {
-  const router = useRouter();
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
-  const { user, token } = useAuth();
 
   const [tutors, setTutors] = useState<TutorProfile[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);

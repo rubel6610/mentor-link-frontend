@@ -53,7 +53,7 @@ const TutorSection = () => {
             </h2>
             <p className="text-gray-600 text-lg mb-6">
               Join a community of expert educators who are shaping the future of learning. 
-              SkillBridge gives you the tools to manage, grow, and monetize your teaching passion.
+              MentorLink gives you the tools to manage, grow, and monetize your teaching passion.
             </p>
             
             <div className="space-y-4 mb-8">
@@ -117,7 +117,7 @@ const TutorSection = () => {
         {/* Testimonial */}
         <div className="mt-16 bg-indigo-900 text-white rounded-3xl p-8 md:p-10 text-center">
           <p className="text-xl md:text-2xl italic mb-4">
-            SkillBridge helped me triple my student base in just 3 months. The platform makes scheduling and payments effortless.
+            MentorLink helped me triple my student base in just 3 months. The platform makes scheduling and payments effortless.
           </p>
           <div className="flex justify-center items-center gap-3">
             <div className="w-10 h-10 bg-indigo-400 rounded-full flex items-center justify-center font-bold">JD</div>

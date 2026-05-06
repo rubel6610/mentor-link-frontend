@@ -22,7 +22,7 @@ const HeroSection = () => {
           <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/20 px-4 py-2 backdrop-blur-sm">
             <Sparkles size={14} />
             <span className="text-sm font-semibold">
-              SkillBridge — Learn from Experts
+              MentorLink — Learn from Experts
             </span>
           </div>
           <h1 className="mb-6 bg-gradient-to-r from-white via-indigo-100 to-pink-100 bg-clip-text text-5xl font-bold text-transparent md:text-7xl">
@@ -31,7 +31,7 @@ const HeroSection = () => {
             Grow Together.
           </h1>
           <p className="mx-auto mb-10 max-w-2xl text-lg text-indigo-100 md:text-xl">
-            SkillBridge connects passionate learners with expert tutors.
+            MentorLink connects passionate learners with expert tutors.
             Browse profiles, check availability, and book sessions instantly.
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">

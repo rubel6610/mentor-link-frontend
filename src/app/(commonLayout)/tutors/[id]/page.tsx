@@ -7,15 +7,12 @@ import Swal from "sweetalert2";
 import {
   ArrowLeft,
   CalendarDays,
-  CheckCircle2,
-  Clock3,
   LoaderCircle,
   Mail,
   MapPin,
   MessageSquareQuote,
   ShieldCheck,
   Star,
-  Wallet,
   BookOpen,
   Sparkles,
 } from "lucide-react";
@@ -32,6 +29,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useAuth } from "@/hooks/useAuth";
+import { getSafeImageUrl } from "@/lib/images";
 
 // Types
 type Category = { id: number; name: string; icon?: string | null };
@@ -66,6 +64,18 @@ type TutorReview = {
   student: { id: number; name: string };
 };
 
+type BookingPaymentResponse = {
+  success?: boolean;
+  message?: string;
+  data?: {
+    checkoutUrl?: string | null;
+    paymentUrl?: string | null;
+    url?: string | null;
+    booking?: { id?: number };
+    id?: number;
+  } | null;
+};
+
 const dayLabels = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 const durationOptions = [
@@ -93,9 +103,10 @@ const TutorAvatar = ({ tutor }: { tutor: TutorProfile }) => {
     "from-blue-400 to-indigo-400",
   ];
   const gradient = gradients[tutor.id % gradients.length];
+  const imageUrl = getSafeImageUrl(tutor.imageUrl);
 
-  return tutor.imageUrl ? (
-    <img src={tutor.imageUrl} alt={tutor.user.name} className="h-full w-full object-cover rounded-[40px]" />
+  return imageUrl ? (
+    <img src={imageUrl} alt={tutor.user.name} className="h-full w-full object-cover rounded-[40px]" />
   ) : (
     <div className={`flex h-full w-full items-center justify-center bg-gradient-to-br ${gradient} rounded-[40px] shadow-lg`}>
       <span className="text-4xl font-bold text-white tracking-tighter">{initials}</span>
@@ -134,6 +145,18 @@ export default function TutorDetailsPage() {
     loadData();
   }, [baseUrl, tutorId]);
 
+  useEffect(() => {
+    const payment = new URLSearchParams(window.location.search).get("payment");
+    if (payment === "cancelled") {
+      Swal.fire({
+        icon: "info",
+        title: "Payment cancelled",
+        text: "No payment was completed for this booking.",
+        confirmButtonColor: "#6366f1",
+      });
+    }
+  }, []);
+
   const estimatedPrice = useMemo(() => {
     return tutor ? (tutor.hourlyRate / 60) * Number(bookingForm.duration) : 0;
   }, [bookingForm.duration, tutor]);
@@ -156,9 +179,19 @@ export default function TutorDetailsPage() {
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
         body: JSON.stringify({ tutorProfileId: tutorId, scheduledAt: bookingForm.scheduledAt, duration: Number(bookingForm.duration), note: bookingForm.note.trim() }),
       });
-      const result = await res.json();
+      const result = (await res.json()) as BookingPaymentResponse;
       if (!res.ok) throw new Error(result.message || "Failed");
-      await Swal.fire({ icon: "success", title: "Booked!", text: result.message, confirmButtonColor: "#6366f1" });
+
+      const checkoutUrl =
+        result.data?.checkoutUrl || result.data?.paymentUrl || result.data?.url;
+
+      if (!checkoutUrl) {
+        throw new Error(
+          "Stripe checkout could not be created by the backend.",
+        );
+      }
+
+      window.location.href = checkoutUrl;
       setBookingForm({ scheduledAt: "", duration: "60", note: "" });
     } catch (e: any) {
       await Swal.fire({ icon: "error", title: "Failed", text: e.message, confirmButtonColor: "#6366f1" });
@@ -335,7 +368,7 @@ export default function TutorDetailsPage() {
                     disabled={isBooking}
                     className="w-full h-14 rounded-2xl bg-indigo-600 text-white font-bold text-lg hover:bg-indigo-700 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-indigo-100"
                   >
-                    {isBooking ? <LoaderCircle className="animate-spin" /> : "Confirm Booking"}
+                    {isBooking ? <LoaderCircle className="animate-spin" /> : "Pay & Book Session"}
                   </Button>
                 </div>
               </div>

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import HeroSection from "@/components/home/HeroSection";
 import HowItWorks from "@/components/home/HowItWorks";
 import FeaturedTutors, { TutorProfile } from "@/components/home/FeaturedTutors";
-import WhySkillBridge from "@/components/home/WhySkillBridge";
+import WhyMentorLink from "@/components/home/WhyMentorLink";
 import CTASection from "@/components/home/CTASection";
 
 export default function HomePage() {
@@ -29,7 +29,7 @@ export default function HomePage() {
       <HeroSection />
       <HowItWorks />
       <FeaturedTutors tutors={featuredTutors} isLoading={isLoading} />
-      <WhySkillBridge />
+      <WhyMentorLink />
       <CTASection />
     </div>
   );

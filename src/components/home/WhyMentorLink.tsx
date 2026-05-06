@@ -3,21 +3,21 @@
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, MessageSquareQuote, Users, ShieldCheck, Star, CalendarDays } from "lucide-react";
 
-const WhySkillBridge = () => {
+const WhyMentorLink = () => {
   return (
     <section className="bg-white py-20">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div>
             <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-indigo-100 px-4 py-1.5 text-xs font-semibold text-indigo-700">
-              <MessageSquareQuote size={12} /> Why SkillBridge
+              <MessageSquareQuote size={12} /> Why MentorLink
             </div>
             <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">
               The smarter way to learn
             </h2>
             <p className="mt-4 text-slate-500">
               We believe every learner deserves personalized guidance.
-              SkillBridge makes it easy to find the right tutor, set a
+              MentorLink makes it easy to find the right tutor, set a
               schedule, and track your progress.
             </p>
             <ul className="mt-8 space-y-4">
@@ -90,4 +90,4 @@ const WhySkillBridge = () => {
   );
 };
 
-export default WhySkillBridge;
+export default WhyMentorLink;
