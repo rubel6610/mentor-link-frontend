@@ -26,7 +26,7 @@ type TutorProfile = {
   imageUrl: string | null;
   avgRating: number;
   totalReviews: number;
-  user: { id: number; name: string; email: string };
+  user: { id: number; name: string; email: string; isBanned?: boolean };
   categories: { categoryId: number; category: Category }[];
   availability?: { dayOfWeek: number; startTime: string; endTime: string }[];
 };
@@ -122,6 +122,9 @@ export default function BrowseTutorPage() {
 
   const filteredTutors = useMemo(() => {
     return tutors.filter((tutor) => {
+      // Hide banned tutors
+      if (tutor.user.isBanned) return false;
+
       const matchesSearch = [tutor.user.name, tutor.bio, tutor.location]
         .join(" ")
         .toLowerCase()

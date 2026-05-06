@@ -17,7 +17,11 @@ export default function HomePage() {
       .then((r) => r.json())
       .then((result) => {
         if (result.data && Array.isArray(result.data)) {
-          setFeaturedTutors(result.data.slice(0, 6));
+          // Filter out banned tutors and slice to first 6
+          const activeTutors = result.data
+            .filter((t: any) => !t.user?.isBanned)
+            .slice(0, 6);
+          setFeaturedTutors(activeTutors);
         }
       })
       .catch(() => {})

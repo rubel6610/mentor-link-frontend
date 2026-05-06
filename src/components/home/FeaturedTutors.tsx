@@ -22,7 +22,7 @@ export type TutorProfile = {
   imageUrl: string | null;
   avgRating: number;
   totalReviews: number;
-  user: { id: number; name: string; email: string };
+  user: { id: number; name: string; email: string; isBanned?: boolean };
   categories?: { categoryId: number; category: { id: number; name: string } }[];
 };
 

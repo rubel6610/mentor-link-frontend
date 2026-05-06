@@ -15,7 +15,9 @@ import {
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 
-type BookingStatus = "CONFIRMED" | "COMPLETED" | "CANCELLED";
+type BookingStatus = "PENDING" | "CONFIRMED" | "COMPLETED" | "CANCELLED";
+type PaymentStatus = "PENDING" | "PAID" | "FAILED" | "REFUNDED";
+type PayoutStatus = "PENDING" | "PAID";
 
 type TutorBooking = {
   id: number;
@@ -24,6 +26,8 @@ type TutorBooking = {
   totalPrice: number;
   note: string | null;
   status: BookingStatus;
+  paymentStatus?: PaymentStatus;
+  payoutStatus?: PayoutStatus;
   student: {
     id: number;
     name: string;
@@ -38,6 +42,7 @@ type ApiResponse<T> = {
 };
 
 const statusTone: Record<BookingStatus, string> = {
+  PENDING: "border-amber-200 bg-amber-50 text-amber-700",
   CONFIRMED: "border-sky-200 bg-sky-50 text-sky-700",
   COMPLETED: "border-emerald-200 bg-emerald-50 text-emerald-700",
   CANCELLED: "border-rose-200 bg-rose-50 text-rose-700",
@@ -234,6 +239,16 @@ const TutorSessionsPage = () => {
                       >
                         {booking.status}
                       </span>
+                      {booking.paymentStatus && (
+                        <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-600">
+                          Payment: {booking.paymentStatus}
+                        </span>
+                      )}
+                      {booking.payoutStatus && (
+                        <span className="rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-600">
+                          Payout: {booking.payoutStatus}
+                        </span>
+                      )}
                     </div>
 
                     <div className="grid gap-3 text-sm text-slate-600 sm:grid-cols-2 xl:grid-cols-4">
@@ -263,7 +278,7 @@ const TutorSessionsPage = () => {
                   </div>
 
                   <div className="flex flex-col gap-3 sm:min-w-56">
-                    {booking.status === "CONFIRMED" ? (
+                    {booking.status === "CONFIRMED" && booking.paymentStatus === "PAID" ? (
                       <Button
                         onClick={() => handleMarkComplete(booking.id)}
                         disabled={updatingBookingId === booking.id}
@@ -282,10 +297,14 @@ const TutorSessionsPage = () => {
                         )}
                       </Button>
                     ) : (
-                      <div className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-500">
+                      <div className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-500 text-center font-medium">
                         {booking.status === "COMPLETED"
-                          ? "This session is already completed."
-                          : "This session was cancelled by the student."}
+                          ? "Session completed."
+                          : booking.status === "CANCELLED"
+                            ? "Session cancelled."
+                            : booking.paymentStatus !== "PAID"
+                              ? "Waiting for payment..."
+                              : "Session in progress..."}
                       </div>
                     )}
                   </div>
@@ -304,3 +323,5 @@ const TutorSessionsPage = () => {
 };
 
 export default TutorSessionsPage;
+
+

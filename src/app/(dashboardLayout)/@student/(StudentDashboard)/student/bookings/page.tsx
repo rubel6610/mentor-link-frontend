@@ -88,16 +88,28 @@ const StudentBookingsPage = () => {
   }, [baseUrl, token]);
 
   useEffect(() => {
-    const payment = new URLSearchParams(window.location.search).get("payment");
+    const query = new URLSearchParams(window.location.search);
+    const payment = query.get("payment");
+    const bookingId = query.get("bookingId");
+
     if (payment === "success") {
+      if (bookingId) {
+        setBookings((prev) =>
+          prev.map((b) =>
+            b.id === Number(bookingId)
+              ? { ...b, paymentStatus: "PAID", status: "CONFIRMED" }
+              : b,
+          ),
+        );
+      }
       Swal.fire({
         icon: "success",
         title: "Payment Successful",
-        text: "Your booking will show as confirmed after Stripe verifies the payment.",
+        text: "Your booking is now confirmed. Stripe will finalize the transaction shortly.",
         confirmButtonColor: "#4f46e5",
       });
     }
-  }, []);
+  }, [isLoadingBookings]);
 
   const handleCancelBooking = async (bookingId: number) => {
     if (!token) return;
@@ -342,7 +354,7 @@ const StudentBookingsPage = () => {
                           </>
                         ) : (
                           <>
-                            <CreditCard className="h-4 w-4" /> Pay now
+                            <CreditCard className="h-4 w-4" /> Complete Payment
                           </>
                         )}
                       </Button>

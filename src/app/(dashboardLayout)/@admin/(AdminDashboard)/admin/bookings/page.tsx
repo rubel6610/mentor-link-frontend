@@ -2,11 +2,14 @@
 
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
-import { CalendarDays, Clock3, LoaderCircle, Search, Sparkles, Wallet, BookOpen } from "lucide-react";
+import { CalendarDays, Clock3, LoaderCircle, Search, Sparkles, Wallet, BookOpen, CheckCircle, CreditCard, Banknote } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
+import { Button } from "@/components/ui/button";
 
 type BookingStatus = "PENDING" | "CONFIRMED" | "COMPLETED" | "CANCELLED";
 type PaymentStatus = "PENDING" | "PAID" | "FAILED" | "REFUNDED";
+type PayoutStatus = "PENDING" | "PAID";
+
 type AdminBooking = {
   id: number;
   scheduledAt: string;
@@ -14,6 +17,7 @@ type AdminBooking = {
   totalPrice: number;
   status: BookingStatus;
   paymentStatus?: PaymentStatus;
+  payoutStatus?: PayoutStatus;
   note: string | null;
   student: { id: number; name: string; email: string };
   tutorProfile: { id: number; user: { id: number; name: string; email: string } };
@@ -31,6 +35,7 @@ const AdminBookingsPage = () => {
   const { token } = useAuth();
   const [bookings, setBookings] = useState<AdminBooking[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [updatingId, setUpdatingId] = useState<number | null>(null);
   const [search, setSearch] = useState("");
   const [statusFilter, setStatusFilter] = useState<BookingStatus | "ALL">("ALL");
 
@@ -52,6 +57,37 @@ const AdminBookingsPage = () => {
     };
     fetchBookings();
   }, [baseUrl, token]);
+
+  const handleUpdatePayment = async (id: number, paymentStatus: PaymentStatus) => {
+    setUpdatingId(id);
+    try {
+      const res = await fetch(`${baseUrl}/admin/bookings/${id}/payment`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ paymentStatus }),
+      });
+      if (!res.ok) throw new Error("Failed to update payment");
+      setBookings((prev) => prev.map((b) => b.id === id ? { ...b, paymentStatus } : b));
+      await Swal.fire({ icon: "success", title: "Payment updated", timer: 1500, showConfirmButton: false });
+    } catch (e: any) {
+      await Swal.fire({ icon: "error", title: "Update failed", text: e.message });
+    } finally { setUpdatingId(null); }
+  };
+
+  const handleProcessPayout = async (id: number) => {
+    setUpdatingId(id);
+    try {
+      const res = await fetch(`${baseUrl}/admin/bookings/${id}/payout`, {
+        method: "PATCH",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (!res.ok) throw new Error("Failed to process payout");
+      setBookings((prev) => prev.map((b) => b.id === id ? { ...b, payoutStatus: "PAID" } : b));
+      await Swal.fire({ icon: "success", title: "Payout processed", timer: 1500, showConfirmButton: false });
+    } catch (e: any) {
+      await Swal.fire({ icon: "error", title: "Payout failed", text: e.message });
+    } finally { setUpdatingId(null); }
+  };
 
   const filtered = bookings.filter((b) => {
     const matchSearch = [b.student.name, b.tutorProfile.user.name].join(" ").toLowerCase().includes(search.toLowerCase());
@@ -112,6 +148,33 @@ const AdminBookingsPage = () => {
               <div className="flex items-center gap-2"><Wallet className="h-4 w-4 text-emerald-500" />${b.totalPrice.toFixed(2)}</div>
             </div>
             {b.note && <p className="mt-3 rounded-2xl border border-slate-100 bg-slate-50 px-4 py-2 text-sm text-slate-500">{b.note}</p>}
+            <div className="mt-4 flex flex-wrap gap-2 border-t border-slate-50 pt-4">
+              {b.paymentStatus !== "PAID" && (
+                <Button
+                  onClick={() => handleUpdatePayment(b.id, "PAID")}
+                  disabled={updatingId === b.id}
+                  className="h-9 rounded-xl bg-indigo-600 px-4 text-xs font-semibold text-white hover:bg-indigo-700"
+                >
+                  <CreditCard className="mr-2 h-3.5 w-3.5" />
+                  Mark Paid
+                </Button>
+              )}
+              {b.status === "COMPLETED" && b.payoutStatus !== "PAID" && (
+                <Button
+                  onClick={() => handleProcessPayout(b.id)}
+                  disabled={updatingId === b.id}
+                  className="h-9 rounded-xl bg-emerald-600 px-4 text-xs font-semibold text-white hover:bg-emerald-700"
+                >
+                  <Banknote className="mr-2 h-3.5 w-3.5" />
+                  Process Payout
+                </Button>
+              )}
+              {b.payoutStatus === "PAID" && (
+                <div className="inline-flex items-center gap-1.5 rounded-xl bg-emerald-50 px-3 py-2 text-xs font-bold text-emerald-700">
+                  <CheckCircle className="h-3.5 w-3.5" /> Payout Completed
+                </div>
+              )}
+            </div>
           </div>
         ))}
       </div>
