@@ -6,6 +6,8 @@ import HowItWorks from "@/components/home/HowItWorks";
 import FeaturedTutors, { TutorProfile } from "@/components/home/FeaturedTutors";
 import WhyMentorLink from "@/components/home/WhyMentorLink";
 import CTASection from "@/components/home/CTASection";
+import PlatformStats from "@/components/home/PlatformStats";
+import SkillExplorer from "@/components/home/SkillExplorer";
 
 export default function HomePage() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "";
@@ -31,7 +33,9 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       <HeroSection />
+      <PlatformStats />
       <HowItWorks />
+      <SkillExplorer />
       <FeaturedTutors tutors={featuredTutors} isLoading={isLoading} />
       <WhyMentorLink />
       <CTASection />

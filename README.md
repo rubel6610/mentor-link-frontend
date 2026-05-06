@@ -5,8 +5,8 @@ MentorLink is a premium 1-on-1 tutoring marketplace that connects passionate lea
 ## 🔗 Quick Links
 
 - **Frontend GitHub:** [https://github.com/rubel6610/mentorlink-frontend](https://github.com/rubel6610/mentorlink-frontend)
-- **Backend GitHub:** [https://github.com/rubel6610/skill-bridge](https://github.com/rubel6610/skill-bridge)
-- **Live Site:** [https://mentorlink-demo.vercel.app](https://mentorlink-frontend-gamma.vercel.app/) (Replace with your actual URL)
+- **Backend GitHub:** [https://github.com/rubel6610/mentor-link](https://github.com/rubel6610/mentorlink)
+- **Live Site:** [https://mentor-link-frontend-gamma.vercel.app](https://mentorlink-frontend-gamma.vercel.app/) (Replace with your actual URL)
 - **Backend API:** [Render](https://skill-bridge-zp3v.onrender.com) (Replace with your actual URL)
 
 

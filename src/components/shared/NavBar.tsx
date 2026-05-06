@@ -40,6 +40,7 @@ const getUserMenuItems = (role?: string) => {
 
 const navLinks = [
   { label: "Find Tutors", href: "/tutors" },
+  { label: "Skills", href: "/#skills" },
   { label: "How it Works", href: "/#how-it-works" },
 ];
 
